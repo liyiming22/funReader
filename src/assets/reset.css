@@ -1,0 +1,185 @@
+@charset "utf-8";
+
+/*CSS reset*/
+
+
+/* 全局重置 */
+
+html {
+    -webkit-text-size-adjust: none;
+    font-size: 100px;
+    -webkit-user-select: none;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-size: 12px;
+    line-height: 1.5;
+    font-family: "Microsoft YaHei", 微软雅黑, Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+
+/*用到的元素盒模型重置*/
+
+div,
+img,
+p,
+h1,
+h2,
+h3,
+input,
+select,
+button,
+table,
+th,
+td,
+form,
+ul,
+ol,
+li,
+em,
+strong,
+a,
+span,
+i {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/*列表重置*/
+
+li {
+    list-style: none;
+}
+
+
+/*表格重置*/
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th,
+td {
+    text-align: left;
+}
+
+
+/*表单重置*/
+
+select {
+    -webkit-appearance: none;
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+}
+
+input {
+    background-color: transparent;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    line-height: normal;
+    -webkit-appearance: none;
+}
+
+input[type=button],
+input[type=submit] {
+    -webkit-appearance: none;
+}
+
+input::-webkit-input-placeholder {
+    color: #999;
+}
+
+input[type=file] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+textarea {
+    resize: none;
+    border: 0
+}
+
+button {
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+
+
+/*文本重置*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+del,
+caption,
+th,
+td,
+strong,
+em,
+i {
+    font-size: 100%;
+    font-style: normal;
+    font-weight: normal;
+}
+
+del,
+ins {
+    text-decoration: none;
+}
+
+q::before,
+q::after {
+    content: '';
+}
+
+
+/*链接重置*/
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:active {
+    outline: 0;
+}
+
+
+/*去掉图片4px下边距*/
+
+img {
+    display: block;
+    width: 100%;
+    -webkit-touch-callout: none;
+}

@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const AutoDllPlugin = require('autodll-webpack-plugin')
@@ -14,7 +13,7 @@ module.exports = {
   output: {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, '../dist'),
-    publicPath: './'
+    publicPath: 'production' == process.env.NODE_ENV ? './' : ''
   },
   module: {
     rules: [
@@ -56,6 +55,11 @@ module.exports = {
       },
 
       {
+        test: /\.less$/,
+        use: ['vue-style-loader', 'css-loader', 'less-loader']
+      },
+
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           'file-loader'
@@ -94,6 +98,6 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, '../src')
     },
-    extensions: ['*', '.js', '.json', '.vue']
+    extensions: ['.js', '.vue', '.json']
   }
 }

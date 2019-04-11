@@ -12,6 +12,6 @@ module.exports = merge(baseConfig, {
   plugins: [
     new CleanWebpackPlugin({
       verbose: true //  write logs to console
-    })
+    }),
   ]
 })
