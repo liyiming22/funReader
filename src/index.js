@@ -4,9 +4,9 @@ import router from './router'
 import '@/assets/reset.css'
 import 'muse-ui/lib/styles/base.less'
 import 'muse-ui/lib/styles/theme.less'
-import { Button } from 'muse-ui'
+import { BottomNav, Icon } from 'muse-ui'
 
-Vue.use(Button)
+Vue.use(BottomNav, Icon)
 
 new Vue({
   router,

@@ -8,15 +8,20 @@
         <div class="dot"></div>
       </div>
     </div>
+    <BottomNav></BottomNav>
   </div>
 </template>
 
 <script>
+import BottomNav from '@/components/BottomNavigation'
 export default {
   name: 'App',
+  components: {
+    BottomNav
+  },
   data () {
     return {
-      showAnimation: true
+      showAnimation: false
     }
   }
 }
