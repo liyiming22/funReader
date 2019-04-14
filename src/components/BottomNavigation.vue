@@ -33,5 +33,3 @@ export default {
     padding-top: 5px;
   }
 </style>
-
-

@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.3",
     "autodll-webpack-plugin": "^0.4.2",
     "autoprefixer": "^9.5.1",
