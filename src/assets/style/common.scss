@@ -1,0 +1,12 @@
+.fl {
+  display: flex;
+}
+
+.clearfix::after {
+  display: block;
+  width: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  content: '.';
+}

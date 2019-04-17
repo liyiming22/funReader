@@ -33,6 +33,12 @@ export default new Router({
 			name: 'rank',
 			// component: Rank
 			component: loadView('Rank')
+		},
+
+		{
+			path: '/details/:id',
+			name: 'bookdetails',
+			component: loadView('BookDetails')
 		}
 	]
 })

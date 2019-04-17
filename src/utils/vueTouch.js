@@ -15,23 +15,17 @@ class VueTouch {
     this.obj.addEventListener('touchend', (e) => {
       this.end(e)
     }, false)
-
-    // this.obj.addEventListener('touchstart', (e) => {
-    //   this.start(e)
-    // }, false)
   }
 
   start (e) {
-    e.preventDefault()
+    // e.preventDefault()
     this.initialPos = this.figurePos(e.changedTouches)
   }
 
   end (e) {
-    e.preventDefault()
+    // e.preventDefault()
     this.endPos = this.figurePos(e.changedTouches)
     let _distanceX = this.endPos.x - this.initialPos.x
-    // let _distanceY = this.endPos.y - this.initialPos.y
-    // let _distance = Math.sqrt(_distanceX * _distanceX + _distanceY * _distanceY)
     if (10 < Math.abs(_distanceX)) {
       if (0 > _distanceX) {
         this.type == 'swipeleft' && this.callback(e)
