@@ -1,11 +1,11 @@
 <template>
   <div>
-    {{this.$route.params.id}}
+    This is search page~
   </div>
 </template>
 
 <script>
 export default {
-  name: 'detail'
+  name: 'Search'
 }
 </script>

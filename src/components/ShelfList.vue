@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <EmptyShelf v-if="!bookList.length"></EmptyShelf>
     <template v-else v-for="(book, index) in bookList">
       <ShelfBook :book="book" :key="index"></ShelfBook>
@@ -24,3 +24,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  @import "@/assets/style/common.scss";
+</style>

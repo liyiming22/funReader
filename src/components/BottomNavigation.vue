@@ -32,4 +32,8 @@ export default {
     height: 50px;
     padding-top: 5px;
   }
+
+  .mu-bottom-item-active {
+    color: #a60b09;
+  }
 </style>

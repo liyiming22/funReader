@@ -14,7 +14,8 @@ Vue.use(VueTimeago, {
   locale: 'zh-CN'
 })
 Vue.use(myTouchPlugin)
-Vue.use(BottomNav, Icon)
+Vue.use(BottomNav)
+Vue.use(Icon)
 
 new Vue({
   router,
