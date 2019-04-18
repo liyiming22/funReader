@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   strict: 'true',
   state: {
-    showLoading: false,
+    showLoading: true,
 
     // mock data goes here
     // bookShelf: [],
