@@ -14,3 +14,17 @@
 .wrapper {
   padding: 0 .5em;
 }
+
+.second-title {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  line-height: 50px;
+  & span:nth-child(1) {
+    font: 400 18px/50px 'Microsoft Yahei';
+    color: #5b5c5e;
+  }
+  & span:nth-child(2) {
+    color: #9c9ba3;
+  }
+}

@@ -49,6 +49,7 @@ export default {
 <style lang="scss" scoped>
   @import "@/assets/style/common.scss";
   .book-item-wrapper {
+    overflow: hidden;
     position: relative;
     width: 100%;
     margin-bottom: 1em;
