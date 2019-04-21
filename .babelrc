@@ -7,6 +7,10 @@
       "camel2DashComponentName": false
     }],
 
-    ["@babel/plugin-syntax-dynamic-import"]
+    ["@babel/plugin-syntax-dynamic-import"],
+
+    // ["transform-regenerator"],
+
+    ["@babel/plugin-transform-runtime"]
   ]
 }

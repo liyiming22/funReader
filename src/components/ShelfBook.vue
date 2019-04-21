@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="book-item-wrapper" v-swipeleft="swipeLeft" v-swiperight="swipeRight">
-      <router-link :to="{ name: 'bookdetails', params: { id: book._id }}" class="fl">
+      <router-link :to="{ name: 'reader', params: { id: book._id }}" class="fl">
         <img :src="book.cover" ref="bookCover" class="book-cover" alt="cover">
         <div class="book-info">
           <p><span class="book-title">{{ book.title }}</span>&nbsp;<timeago :datetime="book.updated"></timeago></p>

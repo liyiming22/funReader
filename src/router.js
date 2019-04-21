@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import BookShelf from '@/pages/BookShelf'
-// import Explore from '@/pages/Exploration'
-// import Rank from '@/pages/Rank'
-
+import BookShelf from '@/pages/BookShelf'
+import Explore from '@/pages/Exploration'
+import Rank from '@/pages/Rank'
+import Reader from '@/pages/Reader'
+import Search from '@/pages/Search'
 
 Vue.use(Router)
 
@@ -17,34 +18,36 @@ export default new Router({
 		{
 			path: '/',
 			name: 'bookshelf',
-			// component: BookShelf
-			component: loadView('BookShelf')
+			component: BookShelf
+			// component: loadView('BookShelf')
 		},
 
 		{
 			path: '/explore',
 			name: 'explore',
-			// component: Explore
-			component: loadView('Exploration')
+			component: Explore
+			// component: loadView('Exploration')
 		},
 
 		{
 			path: '/rank',
 			name: 'rank',
-			// component: Rank
-			component: loadView('Rank')
+			component: Rank
+			// component: loadView('Rank')
 		},
 
 		{
-			path: '/details/:id',
-			name: 'bookdetails',
-			component: loadView('BookDetails')
+			path: '/reader/:id',
+			name: 'reader',
+			// component: loadView('Reader')
+			component: Reader
 		},
 
 		{
 			path: '/search',
 			name: 'search',
-			component: loadView('Search')
+			component: Search
+			// component: loadView('Search')
 		}
 	]
 })

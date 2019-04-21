@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import getters from './getters'
+import actions from './actions'
 
 Vue.use(Vuex)
 
@@ -10,7 +11,7 @@ export default new Vuex.Store({
   state: {
     showLoading: true,
 
-    // mock data goes here
+    // mock odata goes here
     // bookShelf: [],
     bookShelf: [
       {
@@ -39,7 +40,11 @@ export default new Vuex.Store({
         updated: '2019-01-09T16:23:59.445Z',
         lastChapter: '第一千五百一十六章  美丽新世界'
       }
-    ]
+    ],
+
+    currBook: '53115e30173bfacb4904897e',
+
   },
   getters,
+  actions
 })
