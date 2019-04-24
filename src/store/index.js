@@ -57,7 +57,9 @@ export default new Vuex.Store({
 
     currChapter: 0,
 
-    currContent: []
+    currContent: [],
+
+    normalOrder: true
   },
   actions,
   mutations,
