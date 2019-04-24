@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node build/build.js",
-    "dev": "webpack-dev-server --inline --progress --color --config build/webpack.dev.conf.js"
+    "dev": "webpack-dev-server --hot --progress --color --config build/webpack.dev.conf.js"
   },
   "keywords": [],
   "author": "",

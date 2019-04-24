@@ -1,5 +1,5 @@
 const path = require('path')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base.conf.js')
 
@@ -10,9 +10,11 @@ module.exports = merge(baseConfig, {
     host: '192.168.12.1',
     port: 8080,
     contentBase: path.resolve(__dirname, '../dist'),
-    hot: true
+    open: true
+    // hot: true,
+    // historyApiFallback: true
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  // plugins: [
+  //   new webpack.HotModuleReplacementPlugin()
+  // ]
 })

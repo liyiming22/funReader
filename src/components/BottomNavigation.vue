@@ -1,9 +1,9 @@
 <template>
-  <div class="bottom-nav-wrapper">
+  <div class="bottom-nav-wrapper" v-show="pathSet.has(this.$route.path)">
     <mu-bottom-nav>
       <mu-bottom-nav-item title="书架" to="/" :replace=replacePath icon=":fa fa-book-open"></mu-bottom-nav-item>
       <mu-bottom-nav-item title="发现" to="/explore" :replace=replacePath icon=":fas fa-compass"></mu-bottom-nav-item>
-      <mu-bottom-nav-item title="排行" to="rank" :replace=replacePath icon=":fas fa-trophy"></mu-bottom-nav-item>
+      <mu-bottom-nav-item title="排行" to="/rank" :replace=replacePath icon=":fas fa-trophy"></mu-bottom-nav-item>
     </mu-bottom-nav>
   </div>
 </template>
@@ -13,7 +13,8 @@ export default {
   name: 'BottomNav',
   data () {
     return {
-      replacePath: true
+      replacePath: true,
+      pathSet: new Set(['/', '/explore', '/rank'])
     }
   }
 }

@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'booktext',
+  name: 'Booktext',
   props: ['id']
 }
 </script>

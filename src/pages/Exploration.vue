@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <SearchBar></SearchBar>
-    <h1>This is exploration page~</h1>
+    <h1>This is exploration page</h1>
   </div>
 </template>
 
