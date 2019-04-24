@@ -47,6 +47,7 @@ const actions = {
         // 默认使用第一个(优质书源)
         const sourceObj = await dispatch('getBookSource', bookID)
         const { _id } = sourceObj.data[0]
+        console.log('_id', _id)
         const chapterObj = await dispatch('getChaptersBySource', _id)
         const { chapters } = chapterObj.data
         // 设置state中的章节列表

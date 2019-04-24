@@ -23,7 +23,7 @@
             :class="['chapter-item', { active: chapter.id == currBook.activeID }]"
           >
             <span>{{ chapter.title }}</span>
-            <mu-icon v-if="chapter.isVip" value=":fas fa-lock"></mu-icon>
+            <span><mu-icon v-if="chapter.isVip" value=":fas fa-lock"></mu-icon></span>
           </li>
         </ul>
       </div>
@@ -71,14 +71,17 @@ export default {
     right: 0;
     bottom: 0;
     width: 100%;
-    // height: 65%;
-    height: 400px;
+    z-index: 999;
+    height: 65%;
     overflow: auto;
-    background: #f0f0f0;
+    background: #fff;
 
     .chapter-header {
+      position: sticky;
+      top: 0;
+      left: 0;
       border-bottom: 1px solid #f0f0f0;
-      background: #bfa;
+      background: #fff;
       .book-title {
         display: block;
         width: 100%;
@@ -101,9 +104,12 @@ export default {
         .chapter-item {
           display: flex;
           justify-content: space-between;
-          .active {
-            color: red;
-          }
+          padding: 1em 0 1em .25em;
+          border-bottom: 1px solid #f1f1f1;
+          color: #ababab;
+        }
+        .active {
+          color: #4a4a4a;
         }
       }
     }
