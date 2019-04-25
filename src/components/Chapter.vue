@@ -25,9 +25,8 @@
         <li
           v-for="chapter in chapterList"
           :key="chapter.id"
-          @click="readChapter(chapter.id)"
-          :class="['chapter-item', { active: chapter.id == currBook.activeID }]"
-        >
+          @click="$emit('readChapter', chapter.link)"
+          :class="['chapter-item', { active: chapter.id == currBook.activeID }]">
           <span>{{ chapter.title }}</span>
           <span><mu-icon v-if="chapter.isVip" value=":fas fa-lock"></mu-icon></span>
         </li>
@@ -55,10 +54,7 @@ export default {
   methods: {
     ...mapMutations({
       reverseChapter: REVERSE_CHAPTER
-    }),
-    readChapter (id) {
-      alert(`Reading ${ id }!`)
-    },
+    })
   }
 }
 </script>

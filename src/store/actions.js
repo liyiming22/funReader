@@ -1,11 +1,12 @@
-import axios from 'axios'
-import { API_BASE, querySource, queryChapters } from '@/axios/apis'
+import fetch from '@/fetch/fetch'
+import { querySource, queryChapters, queryContent } from '@/fetch/apis'
 import {
   SET_CURR_BOOK,
   SET_CURR_CHAPTER_LIST,
   SET_CURR_CHAPTER,
   SET_CURR_CONTENT
 } from './mutation-types'
+import { encode } from 'punycode';
 
 const actions = {
   /**
@@ -15,10 +16,12 @@ const actions = {
    */
   getBookSource({ commit }, bookID) {
     return new Promise((resolve, reject) => {
-      console.log(`${ API_BASE }/${ querySource }${ bookID }`)
-      axios.get(`${ API_BASE }/${ querySource }${ bookID }`)
-           .then(source => resolve(source))
-           .catch(err => reject(err))
+      fetch(`${ querySource }`, {
+        view: 'summary',
+        book: bookID
+      })
+      .then(source => resolve(source))
+      .catch(error => reject(error))
     })
   },
 
@@ -28,11 +31,10 @@ const actions = {
    * @description 这个方法根据指定的书源获取章节
    */
   getChaptersBySource({ commit }, sourceID) {
-    return new Promise((resovle, reject) => {
-      console.log(`${ API_BASE }/${ queryChapters }/${ sourceID }`)
-      axios.get(`${ API_BASE }/${ queryChapters }/${ sourceID }`)
-           .then(chapterList => resovle(chapterList))
-           .catch(err => reject(err))
+    return new Promise((resolve, reject) => {
+      fetch(`${ queryChapters }/${ sourceID }`)
+           .then(chapterList => resolve(chapterList))
+           .catch(error => reject(error))
     })
   },
 
@@ -56,6 +58,23 @@ const actions = {
       } catch (err) {
         reject(err)
       }
+    })
+  },
+
+  /**
+   * 
+   * @param {*} chapterLink 
+   * @description 这个方法是根据传入的章节link返回指定章节的内容
+   * @warning 章节的link需要进行URI编码
+   */
+  getContent({ commit }, chapterLink) {
+    const encodedURI = encodeURIComponent(chapterLink)
+    return new Promise((resolve, reject) => {
+      fetch(`${ queryContent }/${ encodedURI }`)
+           .then(content => {
+             resolve(content.data.chapter.cpContent)
+           })
+           .catch(error => reject(error))
     })
   }
 }

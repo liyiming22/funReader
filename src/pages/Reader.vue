@@ -1,7 +1,11 @@
 <template>
   <div>
-    <!-- <BookText></BookText> -->
-    <Chapter @toggleChapter="toggleChapter" :class="['chapter', { hide: this.hideChapter }]"></Chapter>
+    <BookText :content="content"></BookText>
+    <Chapter
+      @toggleChapter="toggleChapter"
+      @readChapter="readChapter"
+      :class="['chapter', { hide: this.hideChapter }]">
+    </Chapter>
     <div class="overlay" v-show="!this.hideChapter"></div>
   </div>
 </template>
@@ -24,16 +28,30 @@ export default {
 
   data () {
     return {
-      hideChapter: false
+      hideChapter: false,
+      // content: [],
+      content: ''
+      // currIndex: 0
     }
   },
 
   methods: {
     ...mapActions({
-      queryChapters: 'getChaptersById'
+      queryChapters: 'getChaptersById',
     }),
+
     toggleChapter () {
       this.hideChapter = !this.hideChapter
+    },
+
+    async readChapter (link) {
+      console.log('read')
+      try {
+        const thisContent = await this.$store.dispatch('getContent', link)
+        this.content = thisContent
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
 

@@ -59,7 +59,11 @@ export default new Vuex.Store({
 
     currContent: [],
 
-    normalOrder: true
+    normalOrder: true,
+
+    skin: '#fff',
+
+    isNight: false
   },
   actions,
   mutations,
