@@ -40,8 +40,10 @@ import { mapState, mapMutations } from 'vuex'
 import { REVERSE_CHAPTER } from '@/store/mutation-types'
 export default {
   name: 'Chapter',
-  data () {
-    return {
+  props: {
+    chapters: {
+      type: Array,
+      default: []
     }
   },
   computed: {

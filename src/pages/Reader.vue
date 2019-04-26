@@ -1,7 +1,11 @@
 <template>
   <div>
-    <BookText :content="content"></BookText>
+    <BookText
+      :content="content"
+      @loadNext="loadNext">
+    </BookText>
     <Chapter
+      :chapters="chapters"
       @toggleChapter="toggleChapter"
       @readChapter="readChapter"
       :class="['chapter', { hide: this.hideChapter }]">
@@ -29,17 +33,24 @@ export default {
   data () {
     return {
       hideChapter: false,
-      // content: [],
-      content: ''
-      // currIndex: 0
+      chapters: [],
+      content: [],
+      currIndex: 0,
+      bookId: ''
+    }
+  },
+
+  watch: {
+    chapters: function () {
+      const link = this.chapters[this.currIndex].link
+      this.readChapter(link)
+    },
+    currIndex: function () {
+      console.log('++index~')
     }
   },
 
   methods: {
-    ...mapActions({
-      queryChapters: 'getChaptersById',
-    }),
-
     toggleChapter () {
       this.hideChapter = !this.hideChapter
     },
@@ -47,16 +58,37 @@ export default {
     async readChapter (link) {
       console.log('read')
       try {
-        const thisContent = await this.$store.dispatch('getContent', link)
-        this.content = thisContent
+        let chapter = await this.$store.dispatch('getContent', link)
+        this.content.push({
+          title: chapter.title,
+          text: chapter.isVip ?
+                ['Vip章节，请到正版网站阅读']
+                : chapter.cpContent.split('\n')
+        })
+        console.log(this.content)
       } catch (error) {
         console.log(error)
       }
+    },
+
+    async getChapters () {
+      try {
+        this.chapters = await this.$store.dispatch('getChaptersById', this.bookId)
+      } catch (error) {
+        alert(error)
+      }
+    },
+
+    loadNext () {
+      if (this.currIndex == this.chapters.length - 1) return
+      const link = this.chapters[++this.currIndex].link
+      this.readChapter(link)
     }
   },
 
   created () {
-    this.queryChapters(this.$route.params.id)
+    this.bookId = this.$route.params.id
+    this.getChapters()
   }
 }
 </script>

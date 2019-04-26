@@ -72,7 +72,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       fetch(`${ queryContent }/${ encodedURI }`)
            .then(content => {
-             resolve(content.data.chapter.cpContent)
+             resolve(content.data.chapter)
            })
            .catch(error => reject(error))
     })
