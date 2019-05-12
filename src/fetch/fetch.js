@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://novel.juhe.im'
+// axios.defaults.baseURL = 'http://novel.juhe.im'
+axios.defaults.baseURL = '/api'
 
 axios.interceptors.response.use(response => {
   if (200 != response.status)

@@ -54,6 +54,7 @@ const actions = {
         const { chapters } = chapterObj.data
         // 设置state中的章节列表
         commit(SET_CURR_CHAPTER_LIST, chapters)
+        console.log('chapters', chapters)
         resolve(chapters)
       } catch (err) {
         reject(err)

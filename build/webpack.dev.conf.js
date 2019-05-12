@@ -1,5 +1,4 @@
 const path = require('path')
-// const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base.conf.js')
 
@@ -10,11 +9,15 @@ module.exports = merge(baseConfig, {
     host: '192.168.12.1',
     port: 8080,
     contentBase: path.resolve(__dirname, '../dist'),
-    open: true
-    // hot: true,
-    // historyApiFallback: true
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http://novel.juhe.im',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   },
-  // plugins: [
-  //   new webpack.HotModuleReplacementPlugin()
-  // ]
 })
