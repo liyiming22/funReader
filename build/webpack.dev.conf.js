@@ -10,14 +10,14 @@ module.exports = merge(baseConfig, {
     port: 8080,
     contentBase: path.resolve(__dirname, '../dist'),
     open: true,
-    proxy: {
-      '/api': {
-        target: 'http://novel.juhe.im',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
-    }
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://novel.juhe.im',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/api': ''
+    //     }
+    //   }
+    // }
   },
 })

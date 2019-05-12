@@ -2,7 +2,8 @@
   <div>
     <BookText
       :content="content"
-      @loadNext="loadNext">
+      @loadNext="loadNext"
+      :currIndex="currIndex">
     </BookText>
     <Chapter
       :chapters="chapters"
@@ -44,9 +45,6 @@ export default {
     chapters: function () {
       const link = this.chapters[this.currIndex].link
       this.readChapter(link)
-    },
-    currIndex: function () {
-      console.log('++index~')
     }
   },
 
