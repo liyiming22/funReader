@@ -1,23 +1,27 @@
 <template>
   <div>
-    <BookText
+    <!-- <BookText
       :content="content"
       @loadNext="loadNext"
       :currIndex="currIndex">
-    </BookText>
-    <Chapter
+    </BookText> -->
+    <!-- <Chapter
       :chapters="chapters"
       @toggleChapter="toggleChapter"
       @readChapter="readChapter"
       :class="['chapter', { hide: this.hideChapter }]">
-    </Chapter>
+    </Chapter> -->
     <div class="overlay" v-show="!this.hideChapter"></div>
+    <ReaderTopBar id="top-bar"></ReaderTopBar>
+    <ReaderBottomBar id="bottom-bar"></ReaderBottomBar>
   </div>
 </template>
 
 <script>
 import BookText from '@/components/BookText'
 import Chapter from '@/components/Chapter'
+import ReaderTopBar from '@/components/ReaderTopBar'
+import ReaderBottomBar from '@/components/ReaderBottomBar'
 import {
   mapState,
   mapActions,
@@ -28,12 +32,14 @@ export default {
   name: 'reader',
   components: {
     BookText,
-    Chapter
+    Chapter,
+    ReaderTopBar,
+    ReaderBottomBar
   },
 
   data () {
     return {
-      hideChapter: false,
+      hideChapter: true,
       chapters: [],
       content: [],
       currIndex: 0,
@@ -85,13 +91,25 @@ export default {
   },
 
   created () {
-    this.bookId = this.$route.params.id
-    this.getChapters()
+    // this.bookId = this.$route.params.id
+    // this.getChapters()
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  #top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  #bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+
   .chapter {
     position: fixed;
     left: 0;
