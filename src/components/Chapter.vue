@@ -2,7 +2,7 @@
   <section class="chapter-box wrapper">
     <header class="chapter-header">
       <span class="book-title">
-        <mu-icon value=":fas fa-chevron-down" @click="$emit('toggleChapter')"></mu-icon>
+        <mu-icon value=":fas fa-chevron-down" @click="$emit('hideChapter')"></mu-icon>
         &nbsp;
         {{ currBook.title }}
       </span>

@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <button class="menu-btn">
+    <button class="menu-btn" @click="$emit('showChapter')">
       <mu-icon value=":fas fa-bars"></mu-icon>
       <span>目录</span>
     </button>

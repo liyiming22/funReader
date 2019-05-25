@@ -8,7 +8,7 @@
         <button class="nextBtn" @click="$emit('loadNext')" v-show="currIndex == index">加载下一章</button>
       </article>
     </section>
-    <section id="menu-trigger" @click="triggerMenu"></section>
+    <section id="menu-trigger" @click="$emit('toggleMenu')"></section>
   </section>
 </template>
 
@@ -28,11 +28,6 @@ export default {
   },
   computed: {
     ...mapState(['currBook', 'skin', 'isNight'])
-  },
-  methods: {
-    triggerMenu () {
-      console.log('trigger!')
-    }
   }
 }
 </script>

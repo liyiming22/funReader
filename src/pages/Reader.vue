@@ -1,19 +1,20 @@
 <template>
   <div>
-    <!-- <BookText
+    <BookText
       :content="content"
       @loadNext="loadNext"
+      @toggleMenu="toggleMenu"
       :currIndex="currIndex">
-    </BookText> -->
-    <!-- <Chapter
+    </BookText>
+    <Chapter
       :chapters="chapters"
-      @toggleChapter="toggleChapter"
+      @hideChapter="toggleChapter"
       @readChapter="readChapter"
-      :class="['chapter', { hide: this.hideChapter }]">
-    </Chapter> -->
-    <div class="overlay" v-show="!this.hideChapter"></div>
-    <ReaderTopBar id="top-bar"></ReaderTopBar>
-    <ReaderBottomBar id="bottom-bar"></ReaderBottomBar>
+      :class="['chapter', { 'hide-chapter': this.hideChapter }]">
+    </Chapter>
+    <div id="overlay" v-show="!this.hideChapter"></div>
+    <ReaderTopBar :class="['top-bar', { 'hide-top': !this.triggered }]"></ReaderTopBar>
+    <ReaderBottomBar :class="['bottom-bar', { 'hide-bottom': !this.triggered }]" @showChapter="toggleChapter"></ReaderBottomBar>
   </div>
 </template>
 
@@ -40,6 +41,7 @@ export default {
   data () {
     return {
       hideChapter: true,
+      triggered: false,
       chapters: [],
       content: [],
       currIndex: 0,
@@ -55,12 +57,15 @@ export default {
   },
 
   methods: {
-    toggleChapter () {
-      this.hideChapter = !this.hideChapter
+    async getChapters () {
+      try {
+        this.chapters = await this.$store.dispatch('getChaptersById', this.bookId)
+      } catch (error) {
+        alert(error)
+      }
     },
-
+   
     async readChapter (link) {
-      console.log('read')
       try {
         let chapter = await this.$store.dispatch('getContent', link)
         this.content.push({
@@ -75,38 +80,51 @@ export default {
       }
     },
 
-    async getChapters () {
-      try {
-        this.chapters = await this.$store.dispatch('getChaptersById', this.bookId)
-      } catch (error) {
-        alert(error)
-      }
-    },
-
     loadNext () {
       if (this.currIndex == this.chapters.length - 1) return
       const link = this.chapters[++this.currIndex].link
       this.readChapter(link)
+    },
+ 
+    toggleChapter () {
+      this.hideChapter = !this.hideChapter
+      this.triggered = false
+    },
+
+    toggleMenu () {
+      this.triggered = !this.triggered
     }
   },
 
   created () {
-    // this.bookId = this.$route.params.id
-    // this.getChapters()
+    this.bookId = this.$route.params.id
+    this.getChapters()
   }
 }
 </script>
 
-<style lang="scss" scoped>
-  #top-bar {
+<style scoped>
+  .top-bar {
     position: fixed;
     top: 0;
     left: 0;
+    transition: all .2s ease-out;
   }
 
-  #bottom-bar {
+  .hide-top {
+    top: -2.5em;
+    left: 0;
+  }
+
+  .bottom-bar {
     position: fixed;
     bottom: 0;
+    left: 0;
+    transition: all .2s ease-out;
+  }
+
+  .hide-bottom {
+    bottom: -3.5em;
     left: 0;
   }
 
@@ -123,12 +141,12 @@ export default {
     transition: all .2s;
   }
 
-  .hide {
+  .hide-chapter {
     left: 0;
     bottom: -65%;
   }
-  
-  .overlay {
+
+  #overlay {
     position: absolute;
     top: 0;
     left: 0;
