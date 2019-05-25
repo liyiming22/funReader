@@ -47,9 +47,13 @@ const actions = {
     return new Promise(async (resolve, reject) => {
       try {
         // 默认使用第一个(优质书源)
+        console.log('正在查找书源')
         const sourceObj = await dispatch('getBookSource', bookID)
+        console.log('书源查找完毕')
         const { _id } = sourceObj.data[0]
+        console.log('为你查找章节')
         const chapterObj = await dispatch('getChaptersBySource', _id)
+        console.log('章节返回完毕')
         const { chapters } = chapterObj.data
         // 设置state中的章节列表
         commit(SET_CURR_CHAPTER_LIST, chapters)

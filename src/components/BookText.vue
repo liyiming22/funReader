@@ -5,7 +5,7 @@
       <article v-for="(chapter, index) in content" :key="index" v-if="0 < content.length">
         <h3 class="chapter-title">{{ chapter.title }}</h3>
         <p v-for="(item, index) in chapter.text" :key="index">{{item}}</p>
-        <button class="nextBtn" @click="$emit('loadNext')" v-show="currIndex == index">加载下一章</button>
+        <button class="nextBtn" @click="$emit('loadNext')" v-show="index == content.length - 1">加载下一章</button>
       </article>
     </section>
     <section id="menu-trigger" @click="$emit('toggleMenu')"></section>
@@ -20,10 +20,6 @@ export default {
     content: {
       type: Array,
       default: []
-    },
-    currIndex: {
-      type: Number,
-      default: 0
     }
   },
   computed: {

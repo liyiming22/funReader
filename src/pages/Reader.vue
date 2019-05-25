@@ -3,13 +3,13 @@
     <BookText
       :content="content"
       @loadNext="loadNext"
-      @toggleMenu="toggleMenu"
-      :currIndex="currIndex">
+      @toggleMenu="toggleMenu">
     </BookText>
     <Chapter
       :chapters="chapters"
+      :currIndex="currIndex"
       @hideChapter="toggleChapter"
-      @readChapter="readChapter"
+      @jumpChapter="jumpChapter"
       :class="['chapter', { 'hide-chapter': this.hideChapter }]">
     </Chapter>
     <div id="overlay" v-show="!this.hideChapter"></div>
@@ -49,17 +49,12 @@ export default {
     }
   },
 
-  watch: {
-    chapters: function () {
-      const link = this.chapters[this.currIndex].link
-      this.readChapter(link)
-    }
-  },
-
   methods: {
     async getChapters () {
       try {
         this.chapters = await this.$store.dispatch('getChaptersById', this.bookId)
+        const link = this.chapters[this.currIndex].link
+        this.readChapter(link)
       } catch (error) {
         alert(error)
       }
@@ -74,10 +69,20 @@ export default {
                 ['Vip章节，请到正版网站阅读']
                 : chapter.cpContent.split('\n')
         })
-        console.log(this.content)
+        // console.log(this.content)
       } catch (error) {
         console.log(error)
       }
+    },
+
+    jumpChapter (link) {
+      // 跳转章节，我们需要清空当前内容数组
+      this.content = []
+      // 取出跳转章节的内容
+      this.readChapter(link)
+      // 设置currIndex，否则不会加载“下一章”按钮
+      this.currIndex = this.chapters.findIndex(chapter => chapter.link === link)
+      console.log(this.currIndex)
     },
 
     loadNext () {

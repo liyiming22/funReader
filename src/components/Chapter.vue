@@ -23,10 +23,10 @@
     <div class="chapter-list-wrapper">
       <ul class="chapter-list">
         <li
-          v-for="chapter in chapterList"
+          v-for="(chapter, index) in chapterList"
           :key="chapter.id"
-          @click="$emit('readChapter', chapter.link)"
-          :class="['chapter-item', { active: chapter.id == currBook.activeID }]">
+          @click="$emit('jumpChapter', chapter.link)"
+          :class="['chapter-item', { active: index == currIndex }]">
           <span>{{ chapter.title }}</span>
           <span><mu-icon v-if="chapter.isVip" value=":fas fa-lock"></mu-icon></span>
         </li>
@@ -44,6 +44,10 @@ export default {
     chapters: {
       type: Array,
       default: []
+    },
+    currIndex: {
+      type: Number,
+      default: 0
     }
   },
   computed: {
