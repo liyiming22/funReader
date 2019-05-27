@@ -14,7 +14,12 @@
     </Chapter>
     <div id="overlay" v-show="!this.hideChapter"></div>
     <ReaderTopBar :class="['top-bar', { 'hide-top': !this.triggered }]"></ReaderTopBar>
-    <ReaderBottomBar :class="['bottom-bar', { 'hide-bottom': !this.triggered }]" @showChapter="toggleChapter"></ReaderBottomBar>
+    <ReaderBottomBar
+      :class="['bottom-bar', { 'hide-bottom': !this.triggered }]"
+      @showChapter="toggleChapter"
+      @showSetting="hideSetting = false">
+    </ReaderBottomBar>
+    <SettingBar :class="['bottom-bar', { 'hide-setting': this.hideSetting }]"></SettingBar>
   </div>
 </template>
 
@@ -23,6 +28,7 @@ import BookText from '@/components/BookText'
 import Chapter from '@/components/Chapter'
 import ReaderTopBar from '@/components/ReaderTopBar'
 import ReaderBottomBar from '@/components/ReaderBottomBar'
+import SettingBar from '@/components/SettingBar'
 import {
   mapState,
   mapActions,
@@ -35,13 +41,15 @@ export default {
     BookText,
     Chapter,
     ReaderTopBar,
-    ReaderBottomBar
+    ReaderBottomBar,
+    SettingBar
   },
 
   data () {
     return {
       hideChapter: true,
       triggered: false,
+      hideSetting: true,
       chapters: [],
       content: [],
       currIndex: 0,
@@ -98,6 +106,7 @@ export default {
 
     toggleMenu () {
       this.triggered = !this.triggered
+      this.hideSetting = true
     }
   },
 
@@ -130,6 +139,11 @@ export default {
 
   .hide-bottom {
     bottom: -3.5em;
+    left: 0;
+  }
+
+  .hide-setting {
+    bottom: -8em;
     left: 0;
   }
 

@@ -1,10 +1,10 @@
 <template>
-  <footer>
+  <div id="bottom-bar">
     <button class="menu-btn" @click="$emit('showChapter')">
       <mu-icon value=":fas fa-bars"></mu-icon>
       <span>目录</span>
     </button>
-    <button class="menu-btn">
+    <button class="menu-btn" @click="$emit('showSetting')">
       <mu-icon value=":fas fa-cog"></mu-icon>
       <span>设置</span>
     </button>
@@ -12,7 +12,7 @@
       <mu-icon value=":fas fa-sun"></mu-icon>
       <span>日间模式</span>
     </button>
-  </footer>
+  </div>
 </template>
 
 <script>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  footer {
+  #bottom-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
