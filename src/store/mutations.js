@@ -3,7 +3,11 @@ import {
   SET_CURR_CHAPTER_LIST,
   SET_CURR_CHAPTER,
   SET_CURR_CONTENT,
-  REVERSE_CHAPTER
+  REVERSE_CHAPTER,
+  CHANGE_SKIN,
+  CHANGE_MODE,
+  ZOOM_IN,
+  ZOOM_OUT
 } from './mutation-types'
 
 const mutations = {
@@ -23,9 +27,29 @@ const mutations = {
     state.currContent.push(payload)
   },
 
-  [REVERSE_CHAPTER]: (state) => {
+  [REVERSE_CHAPTER]: state => {
     state.normalOrder = !state.normalOrder
     state.chapterList.reverse()
+  },
+
+  [CHANGE_SKIN]: (state, payload) => {
+    state.skin = payload
+  },
+
+  [CHANGE_MODE]: state => {
+    state.isNight = !state.isNight
+  },
+
+  [ZOOM_IN]: state => {
+    if (26 <= state.fontSize)
+      return
+    ++state.fontSize
+  },
+
+  [ZOOM_OUT]: state => {
+    if (10 >= state.fontSize)
+      return
+    --state.fontSize
   }
 }
 

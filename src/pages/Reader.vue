@@ -49,6 +49,7 @@ export default {
     return {
       hideChapter: true,
       triggered: false,
+      // triggered: true,
       hideSetting: true,
       chapters: [],
       content: [],

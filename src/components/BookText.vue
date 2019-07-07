@@ -1,10 +1,14 @@
 <template>
   <section :class="[skin, { night: isNight }]">
     <section class="articles-wrapper">
-      <header class="book-name">{{ currBook.title }}</header>
+      <header class="book-name" :class="skin">{{ currBook.title }}</header>
       <article v-for="(chapter, index) in content" :key="index" v-if="0 < content.length">
         <h3 class="chapter-title">{{ chapter.title }}</h3>
-        <p v-for="(item, index) in chapter.text" :key="index">{{item}}</p>
+        <p v-for="(item, index) in chapter.text"
+           :key="index"
+           :style="{ fontSize: fontSize + 'px'}">
+           {{item}}
+        </p>
         <button class="nextBtn" @click="$emit('loadNext')" v-show="index == content.length - 1">加载下一章</button>
       </article>
     </section>
@@ -23,7 +27,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['currBook', 'skin', 'isNight'])
+    ...mapState(['currBook', 'skin', 'isNight', 'fontSize'])
   }
 }
 </script>
@@ -45,7 +49,6 @@ export default {
       height: 20px;
       line-height: 20px;
       text-align: center;
-      background: #fff;
       color: #7a776f;
     }
     article {

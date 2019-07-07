@@ -4,18 +4,20 @@
       <div
         v-for="skin in skinList"
         :key="skin"
-        @click=pickColor(skin)
-        :class="[skin]">
+        @click="CHANGE_SKIN(skin)"
+        :class="[skin, { active: skin === $store.state.skin }]">
       </div>
     </div>
     <div class="font-wrapper">
-      <button>Aa-</button>
-      <button>Aa+</button>
+      <button @click="ZOOM_OUT" :class="{ disabled: 10 >= $store.state.fontSize }">Aa-</button>
+      <button @click="ZOOM_IN" :class="{ disabled: 26 <= $store.state.fontSize }">Aa+</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import { CHANGE_SKIN, ZOOM_IN, ZOOM_OUT } from '@/store/mutation-types'
 export default {
   name: 'SettingBar',
   data () {
@@ -26,7 +28,12 @@ export default {
   methods: {
     pickColor (skin) {
       console.log(skin)
-    }
+    },
+    ...mapMutations([
+      CHANGE_SKIN,
+      ZOOM_IN,
+      ZOOM_OUT
+    ])
   }
 }
 </script>
@@ -53,6 +60,9 @@ export default {
         height: $pickerSize;
         border-radius: 50%;
       }
+      .active {
+        border: 2px solid #f7f2b9;
+      }
     }
     .font-wrapper {
       display: flex;
@@ -65,6 +75,10 @@ export default {
         font-weight: bolder;
         background: #bbf;
       }
+      .disabled {
+        background: #a29f9f;
+      }
     }
   }
+
 </style>

@@ -61,7 +61,9 @@ export default new Vuex.Store({
 
     normalOrder: true,
 
-    skin: '#fff',
+    skin: 'default',
+
+    fontSize: 14,
 
     isNight: false
   },
