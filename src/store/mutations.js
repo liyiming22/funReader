@@ -5,7 +5,7 @@ import {
   SET_CURR_CONTENT,
   REVERSE_CHAPTER,
   CHANGE_SKIN,
-  CHANGE_MODE,
+  TOGGLE_NIGHT_MODE,
   ZOOM_IN,
   ZOOM_OUT
 } from './mutation-types'
@@ -36,7 +36,7 @@ const mutations = {
     state.skin = payload
   },
 
-  [CHANGE_MODE]: state => {
+  [TOGGLE_NIGHT_MODE]: state => {
     state.isNight = !state.isNight
   },
 

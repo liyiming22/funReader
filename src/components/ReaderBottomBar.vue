@@ -8,16 +8,25 @@
       <mu-icon value=":fas fa-cog"></mu-icon>
       <span>设置</span>
     </button>
-    <button class="menu-btn">
-      <mu-icon value=":fas fa-sun"></mu-icon>
-      <span>日间模式</span>
+    <button  class="menu-btn" @click="TOGGLE_NIGHT_MODE">
+      <mu-icon v-if="isNight" value=":fas fa-moon"></mu-icon>
+      <mu-icon v-else value=":fas fa-sun"></mu-icon>
+      <span v-if="isNight">夜间模式</span>
+      <span v-else>日间模式</span>
     </button>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: 'ReaderBottomBar'
+  name: 'ReaderBottomBar',
+  methods: {
+    ...mapMutations(['TOGGLE_NIGHT_MODE'])
+  },
+  computed: {
+    ...mapState(['isNight'])
+  }
 }
 </script>
 

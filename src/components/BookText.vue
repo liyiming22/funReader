@@ -1,7 +1,7 @@
 <template>
   <section :class="[skin, { night: isNight }]">
     <section class="articles-wrapper">
-      <header class="book-name" :class="skin">{{ currBook.title }}</header>
+      <header class="book-name" :class="[skin, { night: isNight }]">{{ currBook.title }}</header>
       <article v-for="(chapter, index) in content" :key="index" v-if="0 < content.length">
         <h3 class="chapter-title">{{ chapter.title }}</h3>
         <p v-for="(item, index) in chapter.text"
