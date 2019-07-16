@@ -24,11 +24,11 @@
 </template>
 
 <script>
-import BookText from '@/components/BookText'
-import Chapter from '@/components/Chapter'
-import ReaderTopBar from '@/components/ReaderTopBar'
-import ReaderBottomBar from '@/components/ReaderBottomBar'
-import SettingBar from '@/components/SettingBar'
+import BookText from './components/BookText'
+import Chapter from './components/Chapter'
+import ReaderTopBar from './components/ReaderTopBar'
+import ReaderBottomBar from './components/ReaderBottomBar'
+import SettingBar from './components/SettingBar'
 import {
   mapState,
   mapActions,

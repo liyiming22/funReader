@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import BookShelf from '@/pages/BookShelf'
-import Explore from '@/pages/Exploration'
-import Rank from '@/pages/Rank'
-import Reader from '@/pages/Reader'
-import Search from '@/pages/Search'
+import BookShelf from '@/components/BookShelf/BookShelf'
+import Explore from '@/components/Exploration/Exploration'
+import Rank from '@/components/Rank/Rank'
+import Reader from '@/components/Reader/Reader'
+import Search from '@/components/Search/Search'
 
 Vue.use(Router)
 
 function loadView(view) {
-	return () => import(/* webpackChunkName: "view-[request]" */ `./pages/${ view }.vue`)
+	return () => import(/* webpackChunkName: "view-[request]" */ `./components/${ view }/${ view }.vue`)
 }
 
 export default new Router({
@@ -18,36 +18,36 @@ export default new Router({
 		{
 			path: '/',
 			name: 'bookshelf',
-			component: BookShelf
-			// component: loadView('BookShelf')
+			// component: BookShelf
+			component: loadView('BookShelf')
 		},
 
 		{
 			path: '/explore',
 			name: 'explore',
-			component: Explore
-			// component: loadView('Exploration')
+			// component: Explore
+			component: loadView('Exploration')
 		},
 
 		{
 			path: '/rank',
 			name: 'rank',
-			component: Rank
-			// component: loadView('Rank')
+			// component: Rank
+			component: loadView('Rank')
 		},
 
 		{
 			path: '/reader/:id',
 			name: 'reader',
-			// component: loadView('Reader')
-			component: Reader
+			component: loadView('Reader')
+			// component: Reader
 		},
 
 		{
 			path: '/search',
 			name: 'search',
-			component: Search
-			// component: loadView('Search')
+			// component: Search
+			component: loadView('Search')
 		}
 	]
 })

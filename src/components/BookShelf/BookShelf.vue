@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import ShelfList from '@/components/ShelfList'
-import ShelfHeader from '@/components/ShelfHeader'
+import ShelfList from './components/ShelfList'
+import ShelfHeader from './components/ShelfHeader'
 export default {
   name: 'BookShelf',
   components: {

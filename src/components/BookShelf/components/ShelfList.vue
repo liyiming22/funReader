@@ -9,8 +9,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import EmptyShelf from '@/components/EmptyShelf'
-import ShelfBook from '@/components/ShelfBook'
+import EmptyShelf from './EmptyShelf'
+import ShelfBook from './ShelfBook'
 export default {
   name: 'ShelfList',
   components: {

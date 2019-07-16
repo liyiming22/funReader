@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import BottomNav from '@/components/BottomNavigation'
+import BottomNav from '@/components/common/BottomNavigation'
 export default {
   name: 'App',
   components: {

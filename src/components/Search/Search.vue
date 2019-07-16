@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import SearchIndex from '@/components/SearchIndex'
-import Blurred from '@/components/BlurredSearch'
-import SearchRes from '@/components/SearchRes'
+import SearchIndex from './components/SearchIndex'
+import Blurred from './components/BlurredSearch'
+import SearchRes from './components/SearchRes'
 export default {
   name: 'Search',
   components: {
