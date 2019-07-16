@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import BookShelf from '@/components/BookShelf/BookShelf'
-import Explore from '@/components/Exploration/Exploration'
-import Rank from '@/components/Rank/Rank'
-import Reader from '@/components/Reader/Reader'
-import Search from '@/components/Search/Search'
+// import BookShelf from '@/components/BookShelf/BookShelf'
+// import Explore from '@/components/Exploration/Exploration'
+// import Rank from '@/components/Rank/Rank'
+// import Reader from '@/components/Reader/Reader'
+// import Search from '@/components/Search/Search'
 
 Vue.use(Router)
 
