@@ -59,6 +59,7 @@ export default {
     },
     touchEnd (e) {
       this.transitionDuration = .5
+      // num 为拖动的偏移量
       let num = Math.round(this.offset / this.swiperWidth)
       let sum = this.index + num
       if (sum > this.sum - 1) {
@@ -66,6 +67,7 @@ export default {
       } else if (0 > sum) {
         sum = this.sum - 1
       }
+      // 拖动距离小于图片的一半，那么还原偏移值，否则轮播下一张图
       if (sum === this.index) {
         this.$refs.swiperList.style.transform = `translateX(${this.translateX}px)`
       } else {
@@ -75,6 +77,7 @@ export default {
     }
   },
   created () {
+    // created() 钩子函数执行的时候 DOM 并未渲染，所以需要将操作放在 nextTick() 回调函数中
     this.$nextTick(() => {
       let swiper = this.$refs.swiper
       this.swiperWidth = swiper.offsetWidth

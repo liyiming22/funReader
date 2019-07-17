@@ -6,12 +6,14 @@
         <img :src="src" alt="img">
       </div>
     </Swiper>
+    <Menu></Menu>
   </div>
 </template>
 
 <script>
 import SearchBar from './components/SearchBar'
 import Swiper from './components/Swiper'
+import Menu from './components/Menu'
 export default {
   name: 'Explore',
   data () {
@@ -25,7 +27,8 @@ export default {
   },
   components: {
     SearchBar,
-    Swiper
+    Swiper,
+    Menu
   }
 }
 </script>

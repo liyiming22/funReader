@@ -8,6 +8,7 @@ import '@/assets/style/reset.css'
 import 'muse-ui/lib/styles/base.less'
 import 'muse-ui/lib/styles/theme.less'
 import { BottomNav, Icon } from 'muse-ui'
+import './utils/iconfont'
 
 Vue.use(VueTimeago, {
   name: 'Timeago',
