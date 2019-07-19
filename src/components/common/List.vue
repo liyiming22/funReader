@@ -1,5 +1,5 @@
 <template>
-  <ul id="book-list" :class="{ 'top': top, 'bottom': bottom }">
+  <ul id="book-list">
     <router-link
       v-for="book in books"
       :key="book._id"
@@ -23,16 +23,12 @@
 export default {
   name: "List",
   props: {
-    books: Array,
-    isTop: Boolean,
-    isBottom: Boolean
+    books: Array
   },
   data () {
     return {
       staticPath: 'http://statics.zhuishushenqi.com',
       listData: this.books,
-      top: false,
-      bottom: false
     };
   }
 };
@@ -59,10 +55,7 @@ export default {
     position: relative;
     display: flex;
     height: 120px;
-    margin-top: .8em;
-    &:last-child {
-      margin-bottom: 55px;
-    }
+    margin-top: 1em;
   }
   img {
     width: 90px;
@@ -99,13 +92,5 @@ export default {
       border-radius: 5px;
     }
   }
-}
-
-.top {
-  padding-top: 46px;
-}
-
-.bottom {
-  padding-bottom: 50px;
 }
 </style>
