@@ -6,7 +6,6 @@
         <span @click="$router.replace('/')">
           查看更多
           &nbsp;
-          <mu-icon value=":fas fa-chevron-right"></mu-icon>
         </span>
       </header>
       <ul class="hot-key-list">
@@ -23,13 +22,11 @@
         <span @click="$router.replace('/')">
           换一批
           &nbsp;
-          <mu-icon value=":fas fa-redo-alt"></mu-icon>
         </span>
       </header>
       <ul>
         <li class="hot-book-item" v-for="book in hotBooks" :key="book">
           <router-link to="/">
-            <mu-icon value=":fas fa-book"></mu-icon>
             {{ book }}
           </router-link>
         </li>
@@ -41,13 +38,11 @@
         <span @click="$router.replace('/')">
           删除历史
           &nbsp;
-          <mu-icon value=":fas fa-trash-alt"></mu-icon>
         </span>
       </header>
       <ul>
         <li class="search-history-item" v-for="record in searchHistory" :key="record">
           <router-link to="/">
-            <mu-icon value=":far fa-clock"></mu-icon>
             {{ record }}
           </router-link>
         </li>
@@ -172,7 +167,7 @@ export default {
     .hot-book-item {
       display: inline-block;
       width: 50%;
-      padding: .5em;
+      padding: .5em .5em .5em 0;
     }
 
   }

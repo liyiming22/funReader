@@ -22,7 +22,7 @@
 <script>
 import IconSvg from '@/components/common/IconSvg'
 export default {
-  name: "menu",
+  name: "FeatureMenu",
   components: {
     IconSvg
   }
@@ -33,7 +33,7 @@ export default {
   .menu {
     display: flex;
     justify-content: space-between;
-    margin-top: 1em;
+    margin: 1em 0;
     a {
       display: block;
       width: 25%;

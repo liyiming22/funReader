@@ -5,9 +5,7 @@ import store from './store/index'
 import myTouchPlugin from '@/utils/vueTouch'
 import VueTimeago from 'vue-timeago'
 import '@/assets/style/reset.css'
-import 'muse-ui/lib/styles/base.less'
-import 'muse-ui/lib/styles/theme.less'
-import { BottomNav, Icon } from 'muse-ui'
+import { PullRefresh, List, Cell, Tabbar, TabbarItem, Icon} from 'vant'
 import './utils/iconfont'
 
 Vue.use(VueTimeago, {
@@ -15,8 +13,11 @@ Vue.use(VueTimeago, {
   locale: 'zh-CN'
 })
 Vue.use(myTouchPlugin)
-Vue.use(BottomNav)
+Vue.use(List)
+Vue.use(PullRefresh)
+Vue.use(Cell)
 Vue.use(Icon)
+Vue.use(Tabbar).use(TabbarItem)
 
 new Vue({
   router,

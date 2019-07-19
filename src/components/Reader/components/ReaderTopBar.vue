@@ -1,16 +1,20 @@
 <template>
   <div class="bar fl">
     <span @click="$router.go(-1)">
-      <mu-icon value=":fas fa-chevron-left"></mu-icon>
+      <IconSvg icon-class="jiantouzuo" />
     </span>
     <span>{{ currBook.title }}</span>
   </div>
 </template>
 
 <script>
+import IconSvg from '@/components/common/IconSvg'
 import { mapState } from 'vuex'
 export default {
   name: 'ReaderTopBar',
+  components: {
+    IconSvg
+  },
   computed: {
     ...mapState(['currBook'])
   }

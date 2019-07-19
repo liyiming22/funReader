@@ -2,7 +2,7 @@
   <header class="wrapper">
     <div class="title">追书神器</div>
     <router-link to="/search">
-      <mu-icon value=":fas fa-search"></mu-icon>
+    <van-icon class="icon" name="search" color="#fff" size="20px" />
     </router-link>
   </header>
 </template>
@@ -26,9 +26,9 @@ export default {
     .title {
       font: bold 15px/45px 'Microsoft Yahei';
     }
-    .mu-icon {
-      color: #fff;
+    .icon {
       line-height: 45px;
+      overflow: visible;
     }
   }
 </style>

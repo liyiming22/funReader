@@ -2,7 +2,7 @@
   <div class="wrapper">
     <header>
       <span @click="$router.go(-1)">
-        <mu-icon value=":fas fa-chevron-left"></mu-icon>
+        <IconSvg icon-class="jiantouzuo" />
       </span>
       <input type="text" name="searchInp" id="searchInp" :placeholder="randomHotKey" v-model="inpValue">
       <span class="searchBtn" @click="handleSearch">搜索</span>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import IconSvg from '@/components/common/IconSvg'
 import SearchIndex from './components/SearchIndex'
 import Blurred from './components/BlurredSearch'
 import SearchRes from './components/SearchRes'
@@ -25,7 +26,8 @@ export default {
   components: {
     SearchIndex,
     Blurred,
-    SearchRes
+    SearchRes,
+    IconSvg
   },
   data () {
     return {

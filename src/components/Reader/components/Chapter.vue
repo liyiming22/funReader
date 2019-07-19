@@ -1,8 +1,8 @@
 <template>
   <section class="chapter-box wrapper">
     <header class="chapter-header">
-      <span class="book-title">
-        <mu-icon value=":fas fa-chevron-down" @click="$emit('hideChapter')"></mu-icon>
+      <span class="book-title" @click="$emit('hideChapter')">
+        <IconSvg icon-class="iconfontzhizuobiaozhun023129" />
         &nbsp;
         {{ currBook.title }}
       </span>
@@ -10,11 +10,11 @@
         <span>目录</span>
         <span @click="reverseChapter">
           <span v-if="this.normalOrder">
-            <mu-icon value=":fas fa-sort-amount-up"></mu-icon>
+            <IconSvg icon-class="paixusheng" />
             倒序
           </span>
           <span v-else>
-            <mu-icon value=":fas fa-sort-amount-down"></mu-icon>
+            <IconSvg icon-class="paixujiang" />
             正序
           </span>
         </span>
@@ -28,7 +28,7 @@
           @click="$emit('jumpChapter', chapter.link)"
           :class="['chapter-item', { active: index == currIndex }]">
           <span>{{ chapter.title }}</span>
-          <span><mu-icon v-if="chapter.isVip" value=":fas fa-lock"></mu-icon></span>
+          <span><IconSvg v-if="chapter.isVip" icon-class="suo" /></span>
         </li>
       </ul>
     </div>
@@ -36,10 +36,14 @@
 </template>
 
 <script>
+import IconSvg from '@/components/common/IconSvg'
 import { mapState, mapMutations } from 'vuex'
 import { REVERSE_CHAPTER } from '@/store/mutation-types'
 export default {
   name: 'Chapter',
+  components: {
+    IconSvg
+  },
   props: {
     chapters: {
       type: Array,

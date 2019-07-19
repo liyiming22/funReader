@@ -2,7 +2,7 @@
   <header class="wrapper">
     <router-link to="/search">
       <span class="placeholder">
-        <mu-icon value=":fas fa-search"></mu-icon>
+        <van-icon name="search" />
         &nbsp;&nbsp;
         趣搜索
       </span>

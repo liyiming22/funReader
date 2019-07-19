@@ -1,5 +1,6 @@
 import fetch from '@/fetch/fetch'
-import { querySource, queryChapters, queryContent } from '@/fetch/apis'
+import { querySource, queryChapters, queryContent,
+         queryCategory, queryRank } from '@/fetch/apis'
 import {
   SET_CURR_BOOK,
   SET_CURR_CHAPTER_LIST,
@@ -76,6 +77,33 @@ const actions = {
       fetch(`${ queryContent }/${ encodedURI }`)
            .then(content => {
              resolve(content.data.chapter)
+           })
+           .catch(error => reject(error))
+    })
+  },
+
+  /**
+   * @description 这个方法是获取排名分类
+   */
+  getCategory() {
+    return new Promise ((resolve, reject) => {
+      fetch(`${ queryCategory }`)
+           .then(category => {
+             resolve(category)
+           })
+           .catch(error => reject(error))
+    })
+  },
+
+  /**
+   * @param {*} rankID
+   * @description 这个方法是根据传入的 rankID 来返回指定的排名
+   */
+  getRank ({ commit }, rankID) {
+    return new Promise ((resolve, reject) => {
+      fetch(`${ queryRank }/${ rankID }`)
+           .then(res => {
+             resolve(res)
            })
            .catch(error => reject(error))
     })

@@ -6,16 +6,25 @@
         <img :src="src" alt="img">
       </div>
     </Swiper>
-    <Menu></Menu>
+    <FeatureMenu></FeatureMenu>
+    <List></List>
   </div>
 </template>
 
 <script>
 import SearchBar from './components/SearchBar'
 import Swiper from './components/Swiper'
-import Menu from './components/Menu'
+import FeatureMenu from './components/FeatureMenu'
+import List from './components/List'
+import { mapActions } from 'vuex'
 export default {
   name: 'Explore',
+  components: {
+    SearchBar,
+    Swiper,
+    FeatureMenu,
+    List
+  },
   data () {
     return {
       imgArr: [
@@ -25,10 +34,16 @@ export default {
       ]
     }
   },
-  components: {
-    SearchBar,
-    Swiper,
-    Menu
+  methods: {
+    ...mapActions([
+      'getCategory',
+      'getRank'
+    ])
+  },
+  created () {
+    this.getCategory()
+        .then(data => console.log(data.data.male[0]._id))
+        .catch(err => console.log(err))
   }
 }
 </script>
