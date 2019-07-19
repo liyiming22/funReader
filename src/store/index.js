@@ -59,6 +59,8 @@ export default new Vuex.Store({
 
     currContent: [],
 
+    topBooks: [],
+
     normalOrder: true,
 
     skin: 'default',

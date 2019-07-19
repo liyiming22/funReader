@@ -44,7 +44,6 @@ export default {
     .book-name {
       position: fixed;
       top: 0;
-      height: 0;
       width: 100%;
       height: 20px;
       line-height: 20px;

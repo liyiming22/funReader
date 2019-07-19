@@ -7,7 +7,8 @@ import {
   CHANGE_SKIN,
   TOGGLE_NIGHT_MODE,
   ZOOM_IN,
-  ZOOM_OUT
+  ZOOM_OUT,
+  UPDATE_TOP
 } from './mutation-types'
 
 const mutations = {
@@ -50,6 +51,10 @@ const mutations = {
     if (10 >= state.fontSize)
       return
     --state.fontSize
+  },
+
+  [UPDATE_TOP]: (state, payload) => {
+    state.topBooks = payload
   }
 }
 

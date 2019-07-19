@@ -1,11 +1,6 @@
 <template>
   <div class="bottom-nav-wrapper" v-show="pathSet.has(this.$route.path)">
-    <!-- <mu-bottom-nav>
-      <mu-bottom-nav-item title="书架" to="/" :replace=replacePath icon=":fa fa-book-open"></mu-bottom-nav-item>
-      <mu-bottom-nav-item title="发现" to="/explore" :replace=replacePath icon=":fas fa-compass"></mu-bottom-nav-item>
-      <mu-bottom-nav-item title="排行" to="/rank" :replace=replacePath icon=":fas fa-trophy"></mu-bottom-nav-item>
-    </mu-bottom-nav> -->
-    <van-tabbar :z-index="2000" v-model="active" @change="change" active-color="#a60b09">
+    <van-tabbar class="nav" :z-index="2000" v-model="active" @change="change" active-color="#a60b09">
       <van-tabbar-item v-for="item in tabList" :icon="item.icon" :to="item.path" :key="item.name">{{ item.name }}</van-tabbar-item>
     </van-tabbar>
   </div>
@@ -69,10 +64,12 @@ export default {
 <style lang="scss" scoped>
   .bottom-nav-wrapper {
     position: fixed;
+    height: 50px;
     width: 100%;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 9999;
   }
 
   .mu-bottom-nav {

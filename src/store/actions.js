@@ -1,11 +1,12 @@
 import fetch from '@/fetch/fetch'
 import { querySource, queryChapters, queryContent,
-         queryCategory, queryRank } from '@/fetch/apis'
+         queryCategory, queryRank, queryTopHot } from '@/fetch/apis'
 import {
   SET_CURR_BOOK,
   SET_CURR_CHAPTER_LIST,
   SET_CURR_CHAPTER,
-  SET_CURR_CONTENT
+  SET_CURR_CONTENT,
+  UPDATE_TOP
 } from './mutation-types'
 import { encode } from 'punycode';
 
@@ -97,17 +98,18 @@ const actions = {
 
   /**
    * @param {*} rankID
-   * @description 这个方法是根据传入的 rankID 来返回指定的排名
+   * @description 这个方法是根据传入的 rankID 来返回指定的排名 默认返回的是最热 Top 100
    */
-  getRank ({ commit }, rankID) {
+  getRank ({ commit }, rankID = queryTopHot) {
     return new Promise ((resolve, reject) => {
       fetch(`${ queryRank }/${ rankID }`)
            .then(res => {
-             resolve(res)
+             commit(UPDATE_TOP, res.data.ranking.books)
+             resolve(res.data.ranking)
            })
            .catch(error => reject(error))
     })
-  }
+  },
 }
 
 export default actions

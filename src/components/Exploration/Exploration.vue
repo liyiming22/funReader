@@ -7,7 +7,9 @@
       </div>
     </Swiper>
     <FeatureMenu></FeatureMenu>
-    <List></List>
+    <van-pull-refresh v-if="!isLoad" v-model="isLoading" @refresh="onRefresh">
+      <List :books="books"></List>
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -15,7 +17,7 @@
 import SearchBar from './components/SearchBar'
 import Swiper from './components/Swiper'
 import FeatureMenu from './components/FeatureMenu'
-import List from './components/List'
+import List from '@/components/common/List'
 import { mapActions } from 'vuex'
 export default {
   name: 'Explore',
@@ -31,19 +33,40 @@ export default {
         'http://statics.zhuishushenqi.com/recommendPage/15543710092511',
         'http://statics.zhuishushenqi.com/recommendPage/156111169844287',
         'http://statics.zhuishushenqi.com/recommendPage/156111180957475'
-      ]
+      ],
+      isLoad: true,
+      isLoading: false,
+      books: []
     }
   },
   methods: {
     ...mapActions([
       'getCategory',
       'getRank'
-    ])
+    ]),
+    async getList () {
+      try {
+        let ctx = await this.getRank()
+        this.books = ctx.books
+      } catch (err) {
+        console.log(err)
+      }
+      this.isLoad = false
+    },
+    onRefresh () {
+      this.getList()
+      setTimeout(() => {
+        this.isLoading = false
+      }, 500);
+    }
   },
   created () {
-    this.getCategory()
-        .then(data => console.log(data.data.male[0]._id))
-        .catch(err => console.log(err))
+    if (!this.$store.state.topBooks.length) {
+      this.getList()
+    } else {
+      this.books = this.$store.state.topBooks
+      this.isLoad = false
+    }
   }
 }
 </script>
