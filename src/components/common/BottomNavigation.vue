@@ -41,8 +41,12 @@ export default {
 
 <style lang="scss" scoped>
   .bottom-nav-wrapper {
+    position: fixed;
     height: 50px;
     width: 100%;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 9999;
   }
 </style>
