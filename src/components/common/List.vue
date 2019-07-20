@@ -3,7 +3,7 @@
     <router-link
       v-for="book in books"
       :key="book._id"
-      :to="{name: 'rank', params: {id: book._id}}"
+      :to="{name: 'bookinfo', params: {id: book._id, book: book}}"
       tag="li"
     >
       <div class="book-cover">
@@ -12,7 +12,7 @@
       <div class="book-info">
         <h3 class="book-title">{{ book.title }}</h3>
         <h4 class="book-author">作者：{{ book.author }}</h4>
-        <p class="book-des">{{ book.shortIntro }}</p>
+        <p class="book-des" style="-webkit-box-orient: vertical;">{{ book.shortIntro }}</p>
         <span class="book-cate" v-if="book.minorCate">{{ book.minorCate }}</span>
       </div>
     </router-link>

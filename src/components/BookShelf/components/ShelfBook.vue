@@ -2,7 +2,7 @@
   <div>
     <section class="book-item-wrapper" v-swipeleft="swipeLeft" v-swiperight="swipeRight">
       <router-link :to="{ name: 'reader', params: { id: book._id }}" class="fl">
-        <img :src="book.cover" ref="bookCover" class="book-cover" alt="cover">
+        <img :src="staticPath + book.cover" ref="bookCover" class="book-cover" alt="cover">
         <div class="book-info">
           <p><span class="book-title">{{ book.title }}</span>&nbsp;<timeago :datetime="book.updated"></timeago></p>
           <p class="book-author">{{ book.author }}&nbsp;&nbsp;著</p>
@@ -20,7 +20,8 @@ export default {
   props: ['book'],
   data () {
     return {
-      hasLeft: false
+      hasLeft: false,
+      staticPath: 'http://statics.zhuishushenqi.com'
     }
   },
   methods: {

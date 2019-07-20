@@ -1,6 +1,7 @@
 import fetch from '@/fetch/fetch'
 import { querySource, queryChapters, queryContent,
-         queryCategory, queryRank, queryTopHot } from '@/fetch/apis'
+         queryCategory, queryRank, queryTopHot,
+         queryInfo } from '@/fetch/apis'
 import {
   SET_CURR_BOOK,
   SET_CURR_CHAPTER_LIST,
@@ -110,6 +111,20 @@ const actions = {
            .catch(error => reject(error))
     })
   },
+
+  /**
+   * @param {*} bookid
+   * @description 这个方法是根据传入的书本 ID 来返回书本的详细信息
+   */
+  getBookInfo ({ commit }, bookID) {
+    return new Promise ((resolve, reject) => {
+      fetch(`${ queryInfo }/${ bookID }`)
+           .then(res => {
+             resolve(res.data)
+           })
+           .catch(error => reject(error))
+    })
+  }
 }
 
 export default actions

@@ -1,10 +1,11 @@
 import {
   SET_CURR_BOOK,
+  ADD_BOOK,
+  REMOVE_BOOK,
   SET_CURR_CHAPTER_LIST,
   SET_CURR_CHAPTER,
   SET_CURR_CONTENT,
-  REVERSE_CHAPTER,
-  CHANGE_SKIN,
+  REVERSE_CHAPTER, CHANGE_SKIN,
   TOGGLE_NIGHT_MODE,
   ZOOM_IN,
   ZOOM_OUT,
@@ -55,6 +56,18 @@ const mutations = {
 
   [UPDATE_TOP]: (state, payload) => {
     state.topBooks = payload
+  },
+
+  [ADD_BOOK]: ({ bookShelf }, payload) => {
+    const book = {}
+    book._id = payload._id
+    book.title = payload.title
+    book.author = payload.author
+    book.cover = payload.cover
+    book.updated = payload.updated
+    book.lastChapter = payload.lastChapter
+    bookShelf.push(book)
+    console.log(book)
   }
 }
 

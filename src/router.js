@@ -48,6 +48,12 @@ export default new Router({
 			name: 'search',
 			// component: Search
 			component: loadView('Search')
+		},
+
+		{
+			path: '/bookinfo/:id',
+			name: 'bookinfo',
+			component: loadView('BookInfo')
 		}
 	]
 })

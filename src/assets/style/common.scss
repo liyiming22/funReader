@@ -66,3 +66,28 @@
   color: rgba($color: #fff, $alpha: .5);
   background: #1a1a1a;
 }
+
+.tag {
+	padding: .2em .7em;
+	color: #fff;
+	border-radius: .1em;
+	margin-bottom: .6em;
+	font-size: 1.4em;
+	margin-left: .4em;
+}
+
+.tag:nth-child(1n) {
+	background: burlywood;
+}
+
+.tag:nth-child(2n) {
+	background: cadetblue;
+}
+
+.tag:nth-child(3n) {
+	background: coral;
+}
+
+.tag:nth-child(4n) {
+	background: cornflowerblue;
+}

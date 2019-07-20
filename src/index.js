@@ -5,7 +5,7 @@ import store from './store/index'
 import myTouchPlugin from '@/utils/vueTouch'
 import VueTimeago from 'vue-timeago'
 import '@/assets/style/reset.css'
-import { PullRefresh, List, Cell, Tabbar, TabbarItem, Icon, Lazyload } from 'vant'
+import { PullRefresh, List, Tabbar, TabbarItem, Icon, Lazyload, NavBar } from 'vant'
 import './utils/iconfont'
 
 Vue.use(VueTimeago, {
@@ -15,9 +15,9 @@ Vue.use(VueTimeago, {
 Vue.use(myTouchPlugin)
 Vue.use(List)
 Vue.use(PullRefresh)
-Vue.use(Cell)
 Vue.use(Icon)
 Vue.use(Lazyload)
+Vue.use(NavBar)
 Vue.use(Tabbar).use(TabbarItem)
 
 new Vue({
