@@ -49,6 +49,12 @@ export default new Router({
 			path: '/categories',
 			name: 'categories',
 			component: loadView('Category')
+		},
+
+		{
+			path: '/catlist',
+			name: 'catlist',
+			component: loadView('CateList')
 		}
 	]
 })

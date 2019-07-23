@@ -1,7 +1,7 @@
 import fetch from '@/fetch/fetch'
 import { querySource, queryChapters, queryContent,
          queryRankCategory, queryRank, queryTopHot,
-         queryInfo, queryCategory } from '@/fetch/apis'
+         queryInfo, queryCategory, queryCateInfo } from '@/fetch/apis'
 import {
   SET_CURR_BOOK,
   SET_CURR_CHAPTER_LIST,
@@ -138,6 +138,25 @@ const actions = {
              resolve(res.data)
            })
            .catch(error => reject(error))
+    })
+  },
+
+  /**
+   * params { gender, major } 
+   * description 这个方法是根据性别、分类名返回制定分类下的书
+   */
+  queryCateInfo ({ commit }, payload) {
+    return new Promise ((resolve, reject) => {
+      fetch(`${ queryCateInfo }`, {
+        gender: payload.gender,
+        type: 'hot',
+        major: payload.major,
+        minor: '',
+        start: 0,
+        limit: 50
+      })
+      .then(res => resolve(res.data))
+      .catch(error => reject(error))
     })
   }
 }

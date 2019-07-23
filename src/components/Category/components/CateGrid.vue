@@ -3,7 +3,7 @@
     <h3 class="cat-title">{{ category.title }}</h3>
     <ul class="cat-list">
       <li v-for="item in category.gridList" :key="item.name" class="cat-item">
-        <router-link :to="{ name: 'explore'}">
+        <router-link :to="{ name: 'catlist', params: { gender: category.title, major: item.name }}">
           <p class="cat-name">{{ item.name }}</p>
           <p class="cat-count">{{ item.bookCount }}本</p>
         </router-link>

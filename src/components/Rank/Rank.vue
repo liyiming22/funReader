@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar :fixed="true" title="排行榜" left-arrow></van-nav-bar>
+    <van-nav-bar :fixed="true" title="排行榜" @click-left="onClickLeft" left-arrow></van-nav-bar>
     <div class="wrapper">
       <van-tabs type="card" @click="changeSexual" class="sexual-card">
         <van-tab v-for="(item, n) in rankingTitle" :title="item.name" :key="n">
@@ -79,6 +79,9 @@ export default {
       } else {    //  没有查询过
         this.getList(queryID)
       }
+    },
+    onClickLeft () {
+      this.$router.go(-1)
     }
   },
   async created () {
