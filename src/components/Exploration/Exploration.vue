@@ -40,14 +40,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'getCategory',
-      'getRank'
-    ]),
+    ...mapActions(['fetchRank']),
     async getList () {
       try {
-        let ctx = await this.getRank()
-        this.books = ctx.books
+        let { books } = await this.fetchRank()
+        this.books = books
       } catch (err) {
         console.log(err)
       }

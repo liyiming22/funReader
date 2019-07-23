@@ -9,7 +9,8 @@ import {
   TOGGLE_NIGHT_MODE,
   ZOOM_IN,
   ZOOM_OUT,
-  UPDATE_TOP
+  UPDATE_TOP,
+  SET_CATE
 } from './mutation-types'
 
 const mutations = {
@@ -70,8 +71,12 @@ const mutations = {
     console.log(book)
   },
 
-  [SET_CATEGORY]: ({ category }, payload) => {
-    category = payload
+  [SET_CATEGORY]: (state, payload) => {
+    state.category = payload
+  },
+
+  [SET_CATE]: (state, payload) => {
+    state.cateSet = payload
   }
 }
 

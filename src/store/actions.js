@@ -7,7 +7,8 @@ import {
   SET_CURR_CHAPTER_LIST,
   SET_CURR_CHAPTER,
   SET_CURR_CONTENT,
-  UPDATE_TOP
+  UPDATE_TOP,
+  SET_CATE
 } from './mutation-types'
 import { encode } from 'punycode';
 
@@ -87,11 +88,12 @@ const actions = {
   /**
    * @description 这个方法是获取排名分类
    */
-  getRankCategory() {
+  fetchRankCategory({ commit }) {
     return new Promise ((resolve, reject) => {
       fetch(`${ queryRankCategory }`)
            .then(category => {
-             resolve(category)
+             commit(SET_CATE, category.data)
+             resolve(category.data)
            })
            .catch(error => reject(error))
     })
@@ -101,7 +103,7 @@ const actions = {
    * @param {*} rankID
    * @description 这个方法是根据传入的 rankID 来返回指定的排名 默认返回的是最热 Top 100
    */
-  getRank ({ commit }, rankID = queryTopHot) {
+  fetchRank({ commit }, rankID = queryTopHot) {
     return new Promise ((resolve, reject) => {
       fetch(`${ queryRank }/${ rankID }`)
            .then(res => {

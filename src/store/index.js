@@ -16,6 +16,8 @@ export default new Vuex.Store({
     bookShelf: [],
 
     category: [],
+
+    cateSet: {},
     
     currBook: {
       _id: '53115e30173bfacb4904897e',
