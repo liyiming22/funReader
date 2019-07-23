@@ -14,6 +14,8 @@ export default new Vuex.Store({
 
     // mock data goes here
     bookShelf: [],
+
+    category: [],
     
     currBook: {
       _id: '53115e30173bfacb4904897e',

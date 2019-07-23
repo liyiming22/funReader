@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <router-link to="/">
+    <router-link to="/categories">
       <IconSvg icon-class="fenlei" class="icon" />
       <p>分类</p>
     </router-link>

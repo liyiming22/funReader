@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 import BottomBar from './components/BottomBar'
 export default {
   name: 'BookInfo',

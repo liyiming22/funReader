@@ -1,7 +1,7 @@
 import {
   SET_CURR_BOOK,
   ADD_BOOK,
-  REMOVE_BOOK,
+  SET_CATEGORY,
   SET_CURR_CHAPTER_LIST,
   SET_CURR_CHAPTER,
   SET_CURR_CONTENT,
@@ -68,6 +68,10 @@ const mutations = {
     book.lastChapter = payload.lastChapter
     bookShelf.push(book)
     console.log(book)
+  },
+
+  [SET_CATEGORY]: ({ category }, payload) => {
+    category = payload
   }
 }
 

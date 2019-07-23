@@ -13,7 +13,7 @@
 
 <script>
 import IconSvg from '@/components/common/IconSvg'
-import { mapMutations, mapGetters } from 'vuex'
+import { mapMutations } from 'vuex'
 import { ADD_BOOK } from '@/store/mutation-types'
 export default {
   props: {
@@ -23,9 +23,6 @@ export default {
     IconSvg
   },
   computed: {
-    // ...mapGetters([
-    //   'isAdded'
-    // ])
     isAdded () {
       console.log(this.book._id)
       return -1 !== this.$store.state.bookShelf.findIndex(el => el._id === this.book._id)

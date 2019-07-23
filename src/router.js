@@ -1,11 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import BookShelf from '@/components/BookShelf/BookShelf'
-// import Explore from '@/components/Exploration/Exploration'
-// import Rank from '@/components/Rank/Rank'
-// import Reader from '@/components/Reader/Reader'
-// import Search from '@/components/Search/Search'
-
 Vue.use(Router)
 
 function loadView(view) {
@@ -18,21 +12,18 @@ export default new Router({
 		{
 			path: '/',
 			name: 'bookshelf',
-			// component: BookShelf
 			component: loadView('BookShelf')
 		},
 
 		{
 			path: '/explore',
 			name: 'explore',
-			// component: Explore
 			component: loadView('Exploration')
 		},
 
 		{
 			path: '/rank',
 			name: 'rank',
-			// component: Rank
 			component: loadView('Rank')
 		},
 
@@ -40,13 +31,11 @@ export default new Router({
 			path: '/reader/:id',
 			name: 'reader',
 			component: loadView('Reader')
-			// component: Reader
 		},
 
 		{
 			path: '/search',
 			name: 'search',
-			// component: Search
 			component: loadView('Search')
 		},
 
@@ -54,6 +43,12 @@ export default new Router({
 			path: '/bookinfo/:id',
 			name: 'bookinfo',
 			component: loadView('BookInfo')
+		},
+		
+		{
+			path: '/categories',
+			name: 'categories',
+			component: loadView('Category')
 		}
 	]
 })

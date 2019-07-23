@@ -15,25 +15,28 @@ export default {
         {
           name: '书架',
           path: '/',
-          icon: 'column',
-          n: 1
+          icon: 'column'
         },
 
         {
           name: '发现',
           path: '/explore',
-          icon: 'eye',
-          n: 2
+          icon: 'eye'
         },
 
         {
+          name: '分类',
+          path: '/categories',
+          icon: 'label'
+        },
+        
+        {
           name: '排行',
           path: '/rank',
-          icon: 'medel',
-          n: 2
+          icon: 'medel'
         }
       ],
-      pathSet: new Set(['/', '/explore', '/rank'])
+      pathSet: new Set(['/', '/explore', '/rank', '/categories'])
     }
   },
 }

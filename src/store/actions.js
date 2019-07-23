@@ -1,7 +1,7 @@
 import fetch from '@/fetch/fetch'
 import { querySource, queryChapters, queryContent,
-         queryCategory, queryRank, queryTopHot,
-         queryInfo } from '@/fetch/apis'
+         queryRankCategory, queryRank, queryTopHot,
+         queryInfo, queryCategory } from '@/fetch/apis'
 import {
   SET_CURR_BOOK,
   SET_CURR_CHAPTER_LIST,
@@ -87,9 +87,9 @@ const actions = {
   /**
    * @description 这个方法是获取排名分类
    */
-  getCategory() {
+  getRankCategory() {
     return new Promise ((resolve, reject) => {
-      fetch(`${ queryCategory }`)
+      fetch(`${ queryRankCategory }`)
            .then(category => {
              resolve(category)
            })
@@ -119,6 +119,19 @@ const actions = {
   getBookInfo ({ commit }, bookID) {
     return new Promise ((resolve, reject) => {
       fetch(`${ queryInfo }/${ bookID }`)
+           .then(res => {
+             resolve(res.data)
+           })
+           .catch(error => reject(error))
+    })
+  },
+
+  /**
+   * description 这个方法是返回排名的类名条目
+   */
+  getCategory ({ commit }) {
+    return new Promise ((resolve, reject) => {
+      fetch(`${ queryCategory }`)
            .then(res => {
              resolve(res.data)
            })
