@@ -4,42 +4,70 @@
       <span @click="$router.go(-1)">
         <IconSvg icon-class="jiantouzuo" />
       </span>
-      <input type="text" name="searchInp" id="searchInp" :placeholder="randomHotKey" v-model="inpValue">
+      <input type="text" id="searchInp" @input="handleInput" v-model="inp" @keypress.enter="handleSearch" placeholder="请输入关键字">
       <span class="searchBtn" @click="handleSearch">搜索</span>
     </header>
-    <!-- <hr> -->
-    <div class="search-wrapper">
-      <SearchIndex v-if="'empty' == inpStatus"></SearchIndex>
-      <Blurred v-else-if="'pending' == inpStatus"></Blurred>
-      <SearchRes v-else></SearchRes>
-    </div>
+    <AutoComplete v-show="!books.length" :keywords="keywords" @tapword="handleSearch"></AutoComplete>
+    <List :books="books"></List>
   </div>
 </template>
 
 <script>
+import AutoComplete from './components/AutoComplete'
+import List from '@/components/common/List'
 import IconSvg from '@/components/common/IconSvg'
-import SearchIndex from './components/SearchIndex'
-import Blurred from './components/BlurredSearch'
-import SearchRes from './components/SearchRes'
+import { mapActions } from 'vuex'
+import { debounce, memorize } from '@/utils/util'
 export default {
   name: 'Search',
   components: {
-    SearchIndex,
-    Blurred,
-    SearchRes,
+    AutoComplete,
+    List,
     IconSvg
   },
   data () {
     return {
-      randomHotKey: '重生之都市仙尊',
-      inpValue: '',
-      inpStatus: 'empty'
+      showList: false,
+      cache: {},
+      inp: '',
+      raw: [],
+      keywords: [],
+      books: []
     }
   },
+
   methods: {
-    handleSearch () {
-      alert(this.inpValue)
+    ...mapActions(['queryWords', 'querySearch']),
+    async getWords () {
+      this.books = []
+      let words = this.inp
+      if (words) {
+        this.raw = this.cache.get(words)
+                        ? this.cache.get(words)
+                        : await this.queryWords(words)
+        this.keywords = this.raw.reduce((res, cur) => {
+          res.push(cur.replace(words, `<span style="color: #f60">${ words }</span>`))
+          return res
+        }, [])
+        this.cache.set(words, this.raw)
+      } else {
+        this.keywords = []
+      }
+    },
+    handleInput () {},
+    async handleSearch (index) {
+      let word = "number" === typeof index ? this.raw[index] : this.inp
+      this.books = await this.querySearch(word)
     }
+  },
+
+  created () {
+    this.cache = new Map()
+    this.handleInput = debounce(this.getWords)
+    // const memorizeInput = memorize(this.getWords, this.setWords)
+    // this.handleInput = debounce(e => {
+    //   memorizeInput(e.target.value)
+    // })
   }
 }
 </script>
@@ -72,12 +100,5 @@ export default {
       font: bold 17px/40px 'Microsoft Yahei';
       color: #d14544;
     }
-  }
-  hr {
-    background-color: #fcfcfc;
-  }
-  .search-wrapper {
-    width: 100%;
-    border-top: 1px solid #ebebeb;
   }
 </style>

@@ -1,7 +1,8 @@
 import fetch from '@/fetch/fetch'
 import { querySource, queryChapters, queryContent,
          queryRankCategory, queryRank, queryTopHot,
-         queryInfo, queryCategory, queryCateInfo } from '@/fetch/apis'
+         queryInfo, queryCategory, queryCateInfo,
+         queryComplete, querySearch } from '@/fetch/apis'
 import {
   SET_CURR_BOOK,
   SET_CURR_CHAPTER_LIST,
@@ -10,7 +11,6 @@ import {
   UPDATE_TOP,
   SET_CATE
 } from './mutation-types'
-import { encode } from 'punycode';
 
 const actions = {
   /**
@@ -129,7 +129,7 @@ const actions = {
   },
 
   /**
-   * description 这个方法是返回排名的类名条目
+   * @description 这个方法是返回排名的类名条目
    */
   getCategory ({ commit }) {
     return new Promise ((resolve, reject) => {
@@ -142,8 +142,8 @@ const actions = {
   },
 
   /**
-   * params { gender, major } 
-   * description 这个方法是根据性别、分类名返回制定分类下的书
+   * @param { gender, major } 
+   * @description 这个方法是根据性别、分类名返回制定分类下的书
    */
   queryCateInfo ({ commit }, payload) {
     return new Promise ((resolve, reject) => {
@@ -157,6 +157,30 @@ const actions = {
       })
       .then(res => resolve(res.data))
       .catch(error => reject(error))
+    })
+  },
+
+  /**
+   * @param {*} query
+   * @description 这个方法根据关键字返回自动补全的结果
+   */
+  queryWords ({ commit }, payload) {
+    return new Promise ((resolve, reject) => {
+      fetch(`${ queryComplete }?query={${ payload }}`)
+           .then(res => resolve(res.data.keywords))
+           .catch(error => reject(error))
+    })
+  },
+
+  /**
+   * @param {*} keyword
+   * @description 这个方法根据关键字返回搜索结果
+   */
+  querySearch ({ commit }, payload) {
+    return new Promise ((resolve, reject) => {
+      fetch(`${ querySearch }?keyword={${ payload }}`)
+           .then(res => resolve(res.data.books))
+           .catch(error => reject(error))
     })
   }
 }

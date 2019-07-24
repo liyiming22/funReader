@@ -1,5 +1,5 @@
 <template>
-  <ul id="book-list">
+  <ul id="book-list" v-show="books.length">
     <router-link
       v-for="book in books"
       :key="book._id"

@@ -1,4 +1,5 @@
 import axios from 'axios'
+const CancelToken = axios.CancelToken
 
 axios.defaults.baseURL = '/api'
 // axios.defaults.baseURL = 'http://novel.juhe.im/'
@@ -19,8 +20,22 @@ export default function fetch (url = '', params = {}) {
   }
   return new Promise((resolve, reject) => {
     console.log(url)
+    // if (needCancel) {
+    //   axios.cancelToken = new CancelToken(function executor(c) {
+    //     this.cancel = c
+    //   })
+    // }
     axios.get(url)
          .then(response => resolve(response))
          .catch(error => reject(error))
+    // axios({
+    //   method: 'get',
+    //   url,
+    //   cancelToken: new CancelToken(function executor(c) {
+    //     this.cancel = c
+    //   })
+    // })
+    //   .then(response => resolve(response))
+    //   .catch(error => reject(error))
   })
 }
