@@ -2,7 +2,6 @@ import axios from 'axios'
 const CancelToken = axios.CancelToken
 
 axios.defaults.baseURL = '/api'
-// axios.defaults.baseURL = 'http://novel.juhe.im/'
 
 axios.interceptors.response.use(response => {
   if (200 != response.status)
