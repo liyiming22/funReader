@@ -1,14 +1,14 @@
-<h1 align="center">Welcome to funReader 👋</h1>
 <p align="center">
 	<a href="https://imgchr.com/i/em0IRs"><img src="https://s2.ax1x.com/2019/07/26/em0IRs.th.png" alt="em0IRs.png" border="0" /></a>
 </p>
+<h1 align="center">Welcome to funReader 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
 > 在线小说 web app
 
-在线预览 👉：http://101.132.135.151
+在线预览 👉：http://101.132.135.151](http://101.132.135.151)
 
 ## install
 
