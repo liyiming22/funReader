@@ -1,6 +1,7 @@
 import {
   SET_CURR_BOOK,
   ADD_BOOK,
+  REMOVE_BOOK,
   SET_CATEGORY,
   SET_CURR_CHAPTER_LIST,
   SET_CURR_CHAPTER,
@@ -14,8 +15,15 @@ import {
 } from './mutation-types'
 
 const mutations = {
-  [SET_CURR_BOOK]: (state, payload) => {
-    state.currBook = payload
+  [SET_CURR_BOOK]: (currBook, payload) => {
+    // state.currBook = payload
+    currBook._id = payload._id
+    currBook.title = payload.title
+    currBook.author = payload.author
+    currBook.cover = payload.cover
+    currBook.updated = payload.updated
+    currBook.lastChapter = payload.lastChapter
+    console.log(currBook)
   },
 
   [SET_CURR_CHAPTER_LIST]: (state, payload) => {
@@ -69,6 +77,11 @@ const mutations = {
     book.lastChapter = payload.lastChapter
     bookShelf.push(book)
     console.log(book)
+  },
+
+  [REMOVE_BOOK]: ({ bookShelf }, payload) => {
+    console.log(payload)
+    bookShelf.splice(payload, 1)
   },
 
   [SET_CATEGORY]: (state, payload) => {

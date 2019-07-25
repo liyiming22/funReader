@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="book-item-wrapper" v-swipeleft="swipeLeft" v-swiperight="swipeRight">
-      <router-link :to="{ name: 'reader', params: { id: book._id }}" class="fl">
+      <router-link :to="{ name: 'reader', params: { id: book._id }}" class="fl" @click="handleRead">
         <img :src="staticPath + book.cover" ref="bookCover" class="book-cover" alt="cover">
         <div class="book-info">
           <p><span class="book-title">{{ book.title }}</span>&nbsp;<timeago :datetime="book.updated"></timeago></p>
@@ -15,9 +15,11 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import { REMOVE_BOOK, SET_CURR_BOOK } from '@/store/mutation-types'
 export default {
   name: 'ShelfBook',
-  props: ['book'],
+  props: ['book', 'index'],
   data () {
     return {
       hasLeft: false,
@@ -25,6 +27,11 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+      removeBook: REMOVE_BOOK,
+      setCurrBook: SET_CURR_BOOK
+    }),
+
     swipeLeft () {
       this.$refs.bookCover.style.position = 'absolute'
       this.$refs.bookCover.style.left = '-52px'
@@ -41,8 +48,17 @@ export default {
     },
 
     handleDelete () {
-      alert('delete!!!')
+      this.removeBook(this.index)
+    },
+
+    handleRead () {
+      console.log('read')
+      this.setCurrBook(this.book)
     }
+  },
+
+  created () {
+    // console.log(this.book)
   }
 }
 </script>
