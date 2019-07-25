@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const AutoDllPlugin = require('autodll-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HappyPack = require('happypack')
 
 // const isProduction = process.env.NODE_ENV == 'production'
 
@@ -20,8 +21,10 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
+        // use: 'babel-loader',
+        // exclude: /node_modules/
+        use: 'happypack/loader',
+        include: path.resolve(__dirname, '../src')
       },
 
       {
@@ -56,11 +59,6 @@ module.exports = {
       },
 
       {
-        test: /\.less$/,
-        use: ['vue-style-loader', 'css-loader', 'less-loader']
-      },
-
-      {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           'file-loader'
@@ -86,19 +84,21 @@ module.exports = {
       filename: '[name]_[hash].js',
       path: './dist',
       entry: {
-        vendor: ['vue']
+        vendor: ['vue', 'vue-router', 'vuex', 'vant', 'axios']
       }
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
+    }),
+    new HappyPack({
+      loaders: ['babel-loader']
     })
   ],
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
       '@': path.resolve(__dirname, '../src')
     },
-    extensions: ['.vue', '.js', '.json']
+    extensions: ['.vue', '.js']
   }
 }
