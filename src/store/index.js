@@ -18,6 +18,8 @@ export default new Vuex.Store({
     category: [],
 
     cateSet: {},
+
+    showAnimation: false,
     
     currBook: {
       _id: '53115e30173bfacb4904897e',

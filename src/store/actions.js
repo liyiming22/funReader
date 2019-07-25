@@ -18,13 +18,17 @@ const actions = {
    * @param {*} bookID 
    * @description 获取所有书籍源列表
    */
-  getBookSource({ commit }, bookID) {
+  getBookSource({ state }, bookID) {
     return new Promise((resolve, reject) => {
+      state.showAnimation = true
       fetch(`${ querySource }`, {
         view: 'summary',
         book: bookID
       })
-      .then(source => resolve(source))
+      .then(source => {
+        state.showAnimation = false
+        resolve(source)
+      })
       .catch(error => reject(error))
     })
   },
@@ -34,10 +38,14 @@ const actions = {
    * @param {*} sourceID
    * @description 这个方法根据指定的书源获取章节
    */
-  getChaptersBySource({ commit }, sourceID) {
+  getChaptersBySource({ state }, sourceID) {
     return new Promise((resolve, reject) => {
+      state.showAnimation = true
       fetch(`${ queryChapters }/${ sourceID }`)
-           .then(chapterList => resolve(chapterList))
+           .then(chapterList => {
+             state.showAnimation = false
+             resolve(chapterList)
+           })
            .catch(error => reject(error))
     })
   },
@@ -74,11 +82,13 @@ const actions = {
    * @description 这个方法是根据传入的章节link返回指定章节的内容
    * @warning 章节的link需要进行URI编码
    */
-  getContent({ commit }, chapterLink) {
+  getContent({ state }, chapterLink) {
     const encodedURI = encodeURIComponent(chapterLink)
     return new Promise((resolve, reject) => {
+      state.showAnimation = true
       fetch(`${ queryContent }/${ encodedURI }`)
            .then(content => {
+             state.showAnimation = false
              resolve(content.data.chapter)
            })
            .catch(error => reject(error))
@@ -88,11 +98,13 @@ const actions = {
   /**
    * @description 这个方法是获取排名分类
    */
-  fetchRankCategory({ commit }) {
+  fetchRankCategory({ commit, state }) {
     return new Promise ((resolve, reject) => {
+      state.showAnimation = true
       fetch(`${ queryRankCategory }`)
            .then(category => {
              commit(SET_CATE, category.data)
+             state.showAnimation = false
              resolve(category.data)
            })
            .catch(error => reject(error))
@@ -103,10 +115,12 @@ const actions = {
    * @param {*} rankID
    * @description 这个方法是根据传入的 rankID 来返回指定的排名 默认返回的是最热 Top 100
    */
-  fetchRank({ commit }, rankID = queryTopHot) {
+  fetchRank({ commit, state }, rankID = queryTopHot) {
     return new Promise ((resolve, reject) => {
+      state.showAnimation = true
       fetch(`${ queryRank }/${ rankID }`)
            .then(res => {
+             state.showAnimation = false
              commit(UPDATE_TOP, res.data.ranking.books)
              resolve(res.data.ranking)
            })
@@ -118,10 +132,12 @@ const actions = {
    * @param {*} bookid
    * @description 这个方法是根据传入的书本 ID 来返回书本的详细信息
    */
-  getBookInfo ({ commit }, bookID) {
+  getBookInfo ({ state }, bookID) {
     return new Promise ((resolve, reject) => {
+      state.showAnimation = true
       fetch(`${ queryInfo }/${ bookID }`)
            .then(res => {
+             state.showAnimation = false
              resolve(res.data)
            })
            .catch(error => reject(error))
@@ -131,10 +147,12 @@ const actions = {
   /**
    * @description 这个方法是返回排名的类名条目
    */
-  getCategory ({ commit }) {
+  getCategory ({ state }) {
     return new Promise ((resolve, reject) => {
+      state.showAnimation = true
       fetch(`${ queryCategory }`)
            .then(res => {
+             state.showAnimation = false
              resolve(res.data)
            })
            .catch(error => reject(error))
@@ -145,8 +163,9 @@ const actions = {
    * @param { gender, major } 
    * @description 这个方法是根据性别、分类名返回制定分类下的书
    */
-  queryCateInfo ({ commit }, payload) {
+  queryCateInfo ({ state }, payload) {
     return new Promise ((resolve, reject) => {
+      state.showAnimation = true
       fetch(`${ queryCateInfo }`, {
         gender: payload.gender,
         type: 'hot',
@@ -155,7 +174,10 @@ const actions = {
         start: 0,
         limit: 50
       })
-      .then(res => resolve(res.data))
+      .then(res => {
+        state.showAnimation = false
+        resolve(res.data)
+      })
       .catch(error => reject(error))
     })
   },
@@ -176,10 +198,14 @@ const actions = {
    * @param {*} keyword
    * @description 这个方法根据关键字返回搜索结果
    */
-  querySearch ({ commit }, payload) {
+  querySearch ({ state }, payload) {
     return new Promise ((resolve, reject) => {
+      state.showAnimation = true
       fetch(`${ querySearch }?keyword={${ payload }}`)
-           .then(res => resolve(res.data.books))
+           .then(res => {
+             state.showAnimation = false
+             resolve(res.data.books)
+           })
            .catch(error => reject(error))
     })
   }
