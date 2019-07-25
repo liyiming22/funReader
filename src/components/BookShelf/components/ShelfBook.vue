@@ -15,9 +15,11 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import { REMOVE_BOOK } from '@/store/mutation-types'
 export default {
   name: 'ShelfBook',
-  props: ['book'],
+  props: ['book', 'index'],
   data () {
     return {
       hasLeft: false,
@@ -25,6 +27,9 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+      removeBook: REMOVE_BOOK
+    }),
     swipeLeft () {
       this.$refs.bookCover.style.position = 'absolute'
       this.$refs.bookCover.style.left = '-52px'
@@ -41,7 +46,7 @@ export default {
     },
 
     handleDelete () {
-      alert('delete!!!')
+      this.removeBook(this.index)
     }
   }
 }

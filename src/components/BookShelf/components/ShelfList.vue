@@ -2,7 +2,7 @@
   <div class="wrapper">
     <EmptyShelf v-if="!bookList.length"></EmptyShelf>
     <template v-else v-for="(book, index) in bookList">
-      <ShelfBook :book="book" :key="index"></ShelfBook>
+      <ShelfBook :book="book" :index="index" :key="index"></ShelfBook>
     </template>
   </div>
 </template>
