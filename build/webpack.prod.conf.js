@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = merge(baseConfig, {
   mode: 'production',
-  devtool: 'source-map',
+  // devtool: 'source-map',
   module: {
     rules: []
   },
