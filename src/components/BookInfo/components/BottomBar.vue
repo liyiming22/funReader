@@ -5,8 +5,10 @@
       <p v-if="isAdded">已经加入书架</p>
       <p v-else>加入书架</p>
     </div>
-    <div class="readBtn">
+    <div class="readBtn" @click="setBook">
+    <router-link class="readBtn" :to="{ name: 'reader', params: { id: book._id }}" @click="handleRead">
       <p>立即阅读</p>
+    </router-link>
     </div>
   </div>
 </template>
@@ -14,7 +16,7 @@
 <script>
 import IconSvg from '@/components/common/IconSvg'
 import { mapMutations } from 'vuex'
-import { ADD_BOOK } from '@/store/mutation-types'
+import { ADD_BOOK, SET_CURR_BOOK } from '@/store/mutation-types'
 export default {
   props: {
     book: Object
@@ -31,11 +33,21 @@ export default {
   methods: {
     ...mapMutations({
       addToShelf: ADD_BOOK,
+      setCurrBook: SET_CURR_BOOK
     }),
     addBook () {
       if (this.isAdded)  return
       this.addToShelf(this.book)
+    },
+    setBook () {
+      this.setCurrBook(this.book)
+    },
+    handleRead () {
+      this.setCurrBook(this.book)
     }
+  },
+  created () {
+    // console.log(this.book)
   }
 }
 </script>
@@ -58,10 +70,11 @@ export default {
       border-top: 1px solid #f0f0f0;
       color: #999;
     }
-
     & > div:nth-of-type(2) {
       background: #fa003c;
-      color: #fff;
+      a {
+        color: #fff;
+      }
     }
   }
 </style>

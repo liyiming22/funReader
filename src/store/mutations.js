@@ -15,8 +15,15 @@ import {
 } from './mutation-types'
 
 const mutations = {
-  [SET_CURR_BOOK]: (state, payload) => {
-    state.currBook = payload
+  [SET_CURR_BOOK]: (currBook, payload) => {
+    // state.currBook = payload
+    currBook._id = payload._id
+    currBook.title = payload.title
+    currBook.author = payload.author
+    currBook.cover = payload.cover
+    currBook.updated = payload.updated
+    currBook.lastChapter = payload.lastChapter
+    console.log(currBook)
   },
 
   [SET_CURR_CHAPTER_LIST]: (state, payload) => {
