@@ -9,7 +9,7 @@ module.exports = merge(baseConfig, {
     host: '192.168.1.7',
     port: 8080,
     contentBase: path.resolve(__dirname, '../dist'),
-    open: true,
+    // open: true,
     proxy: {
       '/api': {
         target: 'http://novel.juhe.im',
