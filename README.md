@@ -3,20 +3,49 @@
 </p>
 <h1 align="center">Welcome to funReader 👋</h1>
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-green.svg?cacheSeconds=2592000" />
   <a href="https://github.com/YeomanLi/funReader/blob/master/LICENSE">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg" target="_blank" />
   </a>
+  <a href="https://deepscan.io/dashboard#view=project&tid=4831&pid=6593&bid=55623"><img src="https://deepscan.io/api/teams/4831/projects/6593/branches/55623/badge/grade.svg" alt="DeepScan grade"></a>
 </p>
 
-> 在线小说 web app
+在线小说 web app，部分 UI 使用的是 [vant-ui](https://youzan.github.io/vant/#/zh-CN/intro) ，数据来源于[第三方 API](https://xiadd.github.io/zhuishushenqi/#/?id=%e8%bf%bd%e4%b9%a6%e7%a5%9e%e5%99%a8%e6%8e%a5%e5%8f%a3) 。
 
-在线预览 👉：http://101.132.135.151
+主要技术栈：[Vue](https://cn.vuejs.org/index.html) 、[Vue Router](https://router.vuejs.org/zh/) 、[Vuex](https://vuex.vuejs.org/zh/guide/) 、[Webpack](https://webpack.js.org/) 、[axios](https://github.com/axios/axios) 、[sass](https://sass-lang.com/) 。
+
+在线预览 👉：~~http://101.132.135.151~~
+
+## TODO
+
+- [x] 搜索词自动提示补全
+- [x] 搜索
+- [x] 书架（可保存）
+- [x] 设置（换肤、字体大小、日夜间模式）
+- [x] Loading 动效
+- [x] 书架滑动事件
+- [x] 轮播
+- [x] 章节倒序
+- [x] 分类
+- [x] 排行榜
+- [ ] 书籍评论
+- [ ] 书单
+- [ ] 推荐、热门
+- [ ] 搜索历史
+- [ ] 小说离线
+- [ ] 换源
+- [ ] 骨架屏
 
 ## install
 
 ```sh
 npm install
+```
+
+## How to build
+
+```sh
+npm run build
 ```
 
 ## How to use
@@ -41,17 +70,11 @@ npm run dev
 
 ## Preview
 
-![书架](./screenshots/preview-1.png)
+<img src="./screenshots/preview-1.png" width="320" /> <img src="./screenshots/preview-2.png" width="320" />
 
-![发现页](./screenshots/preview-2.png)
+<img src="./screenshots/preview-3.png" width="320" /> <img src="./screenshots/preview-4.png" width="320" />
 
-![分类页](./screenshots/preview-3.png)
-
-![排行页](./screenshots/preview-4.png)
-
-![类](./screenshots/preview-5.png)
-
-![书籍详情页面](./screenshots/preview-6.png)
+<img src="./screenshots/preview-5.png" width="320" /> <img src="./screenshots/preview-6.png" width="320" />
 
 ## Author
 
