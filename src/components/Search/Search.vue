@@ -17,7 +17,7 @@ import AutoComplete from './components/AutoComplete'
 import List from '@/components/common/List'
 import IconSvg from '@/components/common/IconSvg'
 import { mapActions } from 'vuex'
-import { debounce, memorize } from '@/utils/util'
+import { debounce } from '@/utils/util'
 export default {
   name: 'Search',
   components: {

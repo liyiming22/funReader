@@ -13,7 +13,7 @@ export default new Vuex.Store({
     showLoading: true,
 
     // mock data goes here
-    bookShelf: [],
+    bookShelf: localStorage.getItem("bookShelf") ? JSON.parse(localStorage.getItem("bookShelf")) : [],
 
     category: [],
 

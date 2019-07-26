@@ -76,12 +76,12 @@ const mutations = {
     book.updated = payload.updated
     book.lastChapter = payload.lastChapter
     bookShelf.push(book)
-    console.log(book)
+    localStorage.setItem("bookShelf", JSON.stringify(bookShelf))
   },
 
   [REMOVE_BOOK]: ({ bookShelf }, payload) => {
-    console.log(payload)
     bookShelf.splice(payload, 1)
+    localStorage.setItem("bookShelf", JSON.stringify(bookShelf))
   },
 
   [SET_CATEGORY]: (state, payload) => {

@@ -4,10 +4,7 @@ import { querySource, queryChapters, queryContent,
          queryInfo, queryCategory, queryCateInfo,
          queryComplete, querySearch } from '@/fetch/apis'
 import {
-  SET_CURR_BOOK,
   SET_CURR_CHAPTER_LIST,
-  SET_CURR_CHAPTER,
-  SET_CURR_CONTENT,
   UPDATE_TOP,
   SET_CATE
 } from './mutation-types'
