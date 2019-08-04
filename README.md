@@ -14,8 +14,6 @@
 
 主要技术栈：[Vue](https://cn.vuejs.org/index.html) 、[Vue Router](https://router.vuejs.org/zh/) 、[Vuex](https://vuex.vuejs.org/zh/guide/) 、[Webpack](https://webpack.js.org/) 、[axios](https://github.com/axios/axios) 、[sass](https://sass-lang.com/) 。
 
-在线预览 👉：~~http://101.132.135.151~~
-
 ## TODO
 
 - [x] 搜索词自动提示补全
